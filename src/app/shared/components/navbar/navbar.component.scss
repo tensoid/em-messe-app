@@ -1,8 +1,11 @@
+@import "variables.scss";
+
+
 nav {
     display: flex;
     align-items: center;
     padding-left: 20px;
-    background-color: rgb(224, 224, 224);
+    background-color: $navbar-bg-color;
     padding: 20px;
     
     ul {

@@ -239,8 +239,12 @@ export class GamedataService {
 
   constructor() { }
 
-  getMembers(members: Group[]) {
+  get groups(): Group[] {
     return this.groupList;
+  }
+
+  get teams(): Team[] {
+    return this.groupList.flatMap(group => group.teams);
   }
 
   // getId() {

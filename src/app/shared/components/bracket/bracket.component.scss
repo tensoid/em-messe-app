@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .bracket-wrapper {
     display: flex;
     flex-direction: row;
@@ -11,7 +13,7 @@
     width: 100%;
     height: 100%;
     border-radius: 4px;
-    background-color: #222;
+    background-color: $bracket-bg-color;
     color: white;
     padding: 2px;
 

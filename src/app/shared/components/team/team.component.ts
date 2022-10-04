@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Team } from '../../services/gamedata.service';
 
 @Component({
   selector: 'app-team',
@@ -9,7 +10,16 @@ export class TeamComponent implements OnInit {
 
   constructor() { }
 
+  @Input()
+  team: Team;
+
+  data: string = "abc";
+
   ngOnInit(): void {
+
   }
 
+  dataChanged(_: Event) {
+
+  }
 }

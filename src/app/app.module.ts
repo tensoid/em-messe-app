@@ -13,6 +13,7 @@ import { BracketTreeComponent } from './pages/bracket-tree/bracket-tree.componen
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { TeamOverviewComponent } from './pages/team-overview/team-overview.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,11 +27,12 @@ import { TeamOverviewComponent } from './pages/team-overview/team-overview.compo
     BracketTreeComponent,
     FooterComponent,
     NavbarComponent,
-    TeamOverviewComponent
+    TeamOverviewComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

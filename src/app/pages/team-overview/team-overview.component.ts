@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GamedataService, Team } from 'src/app/shared/services/gamedata.service';
 
 @Component({
   selector: 'app-team-overview',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: GamedataService) { }
+
+  teams: Team[];
 
   ngOnInit(): void {
+    this.teams = this.dataService.teams;
   }
 
 }
