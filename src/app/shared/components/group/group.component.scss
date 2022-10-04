@@ -2,21 +2,24 @@ tr {
     display: flex;
     background-color: gray;
     margin-bottom: 3px;
+    height: 25px;
+    width: 300px;
 
     .country-flag {
-        width: 10%;
+        width: 45px;
         margin-right: 5px;
     }
 
     .country-name {
-        width: 80%;
+        
     }
 
     .country-points {
         text-align: center;
-        width: 10%;
+        flex-basis: 10%;
         background-color: rgb(77, 77, 77);
         color: white;
+        margin-left: auto;
     }
 }
 

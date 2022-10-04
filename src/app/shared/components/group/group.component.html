@@ -1,10 +1,10 @@
-<div class="group-label">-- Group A --</div>
+<div class="group-label">-- {{group.name}} --</div>
 <table>
     <tbody>
-        <tr *ngFor="let country of group">
-            <img class="country-flag" src="/assets/images/flags/germany.png">
-            <td class="country-name">{{country.name}}</td>
-            <td class="country-points">{{country.points}}</td>
+        <tr *ngFor="let team of group.teams; index as i">
+            <img class="country-flag" src="/assets/images/flags/{{team.name}}.png">
+            <td class="country-name">{{team.name}}</td>
+            <td class="country-points">{{i+1}}</td>
         </tr>
     </tbody>
 </table>

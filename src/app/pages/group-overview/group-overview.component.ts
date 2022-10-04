@@ -1,13 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GamedataService, Group } from 'src/app/shared/services/gamedata.service';
 
-export interface Country {
-  name: string;
-  points: number;
-}
-
-export interface Group {
-  countries: Country[];
-}
 
 @Component({
   selector: 'app-group-overview',
@@ -16,172 +9,12 @@ export interface Group {
 })
 export class GroupOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: GamedataService) { }
 
-  public data: Group[] = [
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    },
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    },
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    },
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    },
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    },
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    },
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    },
-    {
-      countries: [
-        {
-          name: 'Germany',
-          points: 1
-        },
-        {
-          name: 'France',
-          points: 2
-        },
-        {
-          name: 'Italy',
-          points: 3
-        },
-        {
-          name: 'Spain',
-          points: 4
-        }
-      ]
-    }
-  ]
+  groups: Group[];
 
   ngOnInit(): void {
+    this.groups = this.dataService.groups;
   }
 
 }

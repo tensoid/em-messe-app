@@ -1,5 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Team } from '../../services/gamedata.service';
+import { Component, OnInit, Input, Output } from '@angular/core';
+import { GamedataService, Team } from '../../services/gamedata.service';
 
 @Component({
   selector: 'app-team',
@@ -8,18 +8,16 @@ import { Team } from '../../services/gamedata.service';
 })
 export class TeamComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: GamedataService) { }
 
   @Input()
   team: Team;
-
-  data: string = "abc";
 
   ngOnInit(): void {
 
   }
 
   dataChanged(_: Event) {
-
+    this.dataService.saveData();
   }
 }

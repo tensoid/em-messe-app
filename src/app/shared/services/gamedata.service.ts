@@ -2,8 +2,7 @@ import { Injectable } from "@angular/core";
 
 export interface Team {
   name: string,
-  member1: string,
-  member2: string
+  members: [string, string]
 }
 
 export interface Group {
@@ -11,35 +10,46 @@ export interface Group {
   teams: Team[]
 }
 
+export enum MatchState {
+  UPCOMING,
+  ONGOING,
+  DONE,
+}
+
+export interface MatchDescription {
+  teams: [string, string],
+  points: [number, number],
+  state: MatchState,
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class GamedataService {
 
+  constructor() { 
+    this.loadData();
+  }
 
-  private groupList: Group[] = [
+  private _groups: Group[] = [
     {
       name: 'Gruppe A',
       teams: [
         {
         name: 'Ecuador',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Niederlande',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Katar',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Senegal',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         }
       ],
     },
@@ -48,23 +58,19 @@ export class GamedataService {
       teams: [
         {
         name: 'England',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Iran',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'USA',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Wales',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         }
       ],
     },
@@ -73,23 +79,19 @@ export class GamedataService {
       teams: [
         {
         name: 'Argentinien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Mexiko',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Polen',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
-        name: 'Saudi_Arabien',
-        member1: '',
-        member2: ''
+        name: 'Saudi-Arabien',
+        members: ["", ""]
         }
       ],
     },
@@ -98,23 +100,19 @@ export class GamedataService {
       teams: [
         {
         name: 'Australien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Dänemark',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Frankreich',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Tunesien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         }
       ],
     },
@@ -123,23 +121,19 @@ export class GamedataService {
       teams: [
         {
         name: 'Costa Rica',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Deutschland',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Japan',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Spanien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         }
       ],
     },
@@ -148,23 +142,19 @@ export class GamedataService {
       teams: [
         {
         name: 'Belgien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Kanada',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Kroatien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Marokko',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         }
       ],
     },
@@ -173,23 +163,19 @@ export class GamedataService {
       teams: [
         {
         name: 'Brasilien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Kamerun',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Serbien',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Schweiz',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         }
       ],
     },
@@ -198,57 +184,114 @@ export class GamedataService {
       teams: [
         {
         name: 'Ghana',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Portugal',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Republik Korea',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         },
         {
         name: 'Uruguay',
-        member1: '',
-        member2: ''
+        members: ["", ""]
         }
       ],
     },
   ];
 
-  //Mannschaft A erzielte 6 Tore und erhielt 2 Gegentore
-  //Goalquotient = 6/2=3
-  //Goaldifference = 6-2=4
- /* private teamGroupPhase: Team[] = [{
-    points: 0,
-    goalQuotient: 0,
-    goalDifference: 0,
-    winner: false,
-  }];
+  private _matches: MatchDescription[] = [
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+    {
+      teams: ["Katar", "England"],
+      points: [0, 0],
+      state: MatchState.UPCOMING
+    },
+  ];
 
-  private teamEliminationPhase16: Team[] = [{
-    points: 0,
-    goalQuotient: 0,
-    goalDifference: 0,
-    winner: false,
-  }];*/
+  saveData(){
+    localStorage.setItem('matches', JSON.stringify(this._matches));
+    localStorage.setItem('groups', JSON.stringify(this._groups));
+  }
 
-  constructor() { }
+  loadData(){
+    let matches = localStorage.getItem('matches');
+    if(matches){
+      let parsed = JSON.parse(matches);
+      if(parsed) {
+        this._matches = parsed;
+      }
+    }
 
+    let groups = localStorage.getItem('groups');
+    if(groups){
+      let parsed = JSON.parse(groups);
+      if(parsed) {
+        this._groups = parsed;
+      }
+    }
+  }
+  
   get groups(): Group[] {
-    return this.groupList;
+    return this._groups;
   }
-
+  
   get teams(): Team[] {
-    return this.groupList.flatMap(group => group.teams);
+    return this._groups.flatMap(group => group.teams);
   }
-
-  // getId() {
-    
-  // }
-
 }
+
+
+
+//Mannschaft A erzielte 6 Tore und erhielt 2 Gegentore
+//Goalquotient = 6/2=3
+//Goaldifference = 6-2=4
+/* private teamGroupPhase: Team[] = [{
+  points: 0,
+  goalQuotient: 0,
+  goalDifference: 0,
+  winner: false,
+}];
+
+private teamEliminationPhase16: Team[] = [{
+  points: 0,
+  goalQuotient: 0,
+  goalDifference: 0,
+  winner: false,
+}];*/
