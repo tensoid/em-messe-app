@@ -1,0 +1,29 @@
+tr {
+    display: flex;
+    background-color: gray;
+    margin-bottom: 3px;
+
+    .country-flag {
+        width: 10%;
+        margin-right: 5px;
+    }
+
+    .country-name {
+        width: 80%;
+    }
+
+    .country-points {
+        text-align: center;
+        width: 10%;
+        background-color: rgb(77, 77, 77);
+        color: white;
+    }
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 21%;
+    margin-right: 20px;
+}

@@ -1,0 +1,40 @@
+.bracket-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 70%;
+}
+
+.bracket{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    border-radius: 4px;
+    background-color: #222;
+    color: white;
+    padding: 2px;
+
+    /*
+    :first-child {
+        border-bottom: 1px solid black;
+    }
+    */
+}
+
+.team {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 100%;
+    
+    .team-flag {
+        margin-right: 10%;
+        width: 20px;
+        height: 13px;
+        border: 1px solid white;
+    }
+
+    
+}

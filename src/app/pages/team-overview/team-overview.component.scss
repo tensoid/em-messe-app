@@ -1,0 +1,12 @@
+.teams-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+:host {
+    flex: 1;
+    display: flex;
+}
+
+

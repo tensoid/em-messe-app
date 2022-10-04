@@ -1,0 +1,25 @@
+.title {
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.next-games {
+    border: 1px solid black;
+    margin-bottom: 50px;
+    background-color: rgb(189, 189, 189);
+    padding: 10px;
+}
+
+.tables-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}

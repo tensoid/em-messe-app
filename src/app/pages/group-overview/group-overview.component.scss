@@ -1,0 +1,12 @@
+.groups-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+    align-content: center;
+    row-gap: 100px;
+}
+
+:host {
+    flex: 1;
+}

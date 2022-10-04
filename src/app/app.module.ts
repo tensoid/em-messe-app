@@ -12,6 +12,7 @@ import { TableOverviewComponent } from './pages/table-overview/table-overview.co
 import { BracketTreeComponent } from './pages/bracket-tree/bracket-tree.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { TeamOverviewComponent } from './pages/team-overview/team-overview.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     TableOverviewComponent,
     BracketTreeComponent,
     FooterComponent,
-    NavbarComponent
+    NavbarComponent,
+    TeamOverviewComponent
   ],
   imports: [
     BrowserModule,

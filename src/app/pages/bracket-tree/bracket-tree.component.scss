@@ -1,0 +1,75 @@
+$bracket-connector-color: black;
+$bracket-connector-width: 2px;
+
+
+.tree-container{
+    display: flex;
+    flex-direction: row;
+    height: 600px;
+    width: 600px;
+
+    &:first-child {
+        &::before {
+            display: none;
+        }
+
+        
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    &:last-child {
+        ::after {
+           display: none; 
+        }
+    }
+
+    &:first-child {
+        ::before {
+           display: none; 
+        }
+    }
+}
+
+app-bracket {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &::before {
+        border-top: $bracket-connector-width solid $bracket-connector-color;
+        content: '';
+        position: absolute;
+        left: 0;
+        width: 10%;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 10%;
+        height: 50%;
+        right: 0;
+        border-right: $bracket-connector-width $bracket-connector-color solid;
+    }
+
+    &:nth-child(odd)::after {
+        border-top: $bracket-connector-width solid $bracket-connector-color;
+        top: 50%;
+    }
+
+    &:nth-child(even)::after {
+        border-bottom: $bracket-connector-width solid $bracket-connector-color;
+        bottom: 50%;
+    }
+}
+
+:host {
+    flex: 1;
+}

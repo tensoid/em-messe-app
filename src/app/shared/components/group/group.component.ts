@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Country } from 'src/app/pages/group-overview/group-overview.component';
 
 @Component({
   selector: 'app-group',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class GroupComponent implements OnInit {
 
   constructor() { }
+
+  @Input()
+  group: Country[];
 
   ngOnInit(): void {
   }

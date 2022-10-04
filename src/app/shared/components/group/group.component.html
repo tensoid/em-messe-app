@@ -1,1 +1,10 @@
-<p>group works!</p>
+<div class="group-label">-- Group A --</div>
+<table>
+    <tbody>
+        <tr *ngFor="let country of group">
+            <img class="country-flag" src="/assets/images/flags/germany.png">
+            <td class="country-name">{{country.name}}</td>
+            <td class="country-points">{{country.points}}</td>
+        </tr>
+    </tbody>
+</table>
