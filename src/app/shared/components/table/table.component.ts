@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatchDescription } from '../../services/gamedata.service';
 
 @Component({
   selector: 'app-table',
@@ -9,7 +10,9 @@ export class TableComponent implements OnInit {
 
   constructor() { }
 
+  @Input()
+  match: MatchDescription;
+
   ngOnInit(): void {
   }
-
 }
