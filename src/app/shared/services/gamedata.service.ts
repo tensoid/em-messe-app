@@ -179,31 +179,28 @@ export class GamedataService {
   }
 
   startNextMatches() {
-    //TODO: change this to findIndex
-    let firstActiveMatch = this._matches.find(
+    let firstActiveMatchIndex = this._matches.findIndex(
       (match) => match.state == MatchState.ONGOING
     );
 
-    // No matches played so far
-    if (firstActiveMatch == undefined) {
+    // This should not happen due to the preset setting the first 4 matches to ONGOING
+    if (firstActiveMatchIndex == -1) {
       return;
     }
 
-    let lastPlayedMatchIndex = this._matches.indexOf(firstActiveMatch) + 3;
-
     // All matches done
-    if (lastPlayedMatchIndex == this._matches.length - 1) {
+    if (firstActiveMatchIndex == this._matches.length - 4) {
       for (let i = this._matches.length - 4; i < this._matches.length; i++) {
         this._matches[i].state = MatchState.DONE;
       }
 
-      return;
+      return this.saveData();
     }
 
     // Anything in between
-    for (let i = lastPlayedMatchIndex + 1; i < lastPlayedMatchIndex + 5; i++) {
-      this._matches[i].state = MatchState.ONGOING;
-      this._matches[i - 4].state = MatchState.DONE;
+    for (let i = firstActiveMatchIndex; i < firstActiveMatchIndex + 4; i++) {
+      this._matches[i].state = MatchState.DONE;
+      this._matches[i + 4].state = MatchState.ONGOING;
     }
 
     this.saveData();
@@ -219,6 +216,8 @@ export class GamedataService {
       for (let i = this._matches.length - 4; i < this._matches.length; i++) {
         this._matches[i].state = MatchState.ONGOING;
       }
+
+      return this.saveData();
     }
 
     // No matches played so far
