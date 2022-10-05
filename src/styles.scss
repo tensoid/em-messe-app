@@ -9,5 +9,6 @@ body {
 body {
   margin: 0;
   font-family: Overpass;
-  background: $page-bg;
+  background-image: $page-bg-gradient, url("/assets/images/backgrounds/arena.jpg");
+  background-size: cover;
 }
