@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Group } from '../../services/gamedata.service';
+import { GroupWithScores } from '../../services/gamedata.service';
 
 @Component({
   selector: 'app-group',
@@ -11,7 +11,7 @@ export class GroupComponent implements OnInit {
   constructor() { }
 
   @Input()
-  group: Group;
+  group: GroupWithScores;
 
   ngOnInit(): void {
   }

@@ -4,7 +4,7 @@
         <tr *ngFor="let team of group.teams; index as i">
             <img class="country-flag" src="/assets/images/flags/{{team.name}}.png">
             <td class="country-name">{{team.name}}</td>
-            <td class="country-points">{{i+1}}</td>
+            <td class="country-points">{{group.scores[i].points}}</td>
         </tr>
     </tbody>
 </table>

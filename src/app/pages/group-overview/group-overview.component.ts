@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GamedataService, Group } from 'src/app/shared/services/gamedata.service';
+import { GamedataService, GroupWithScores } from 'src/app/shared/services/gamedata.service';
 
 
 @Component({
@@ -11,10 +11,10 @@ export class GroupOverviewComponent implements OnInit {
 
   constructor(private dataService: GamedataService) { }
 
-  groups: Group[];
+  groups: GroupWithScores[];
 
   ngOnInit(): void {
-    this.groups = this.dataService.groups;
+    this.groups = this.dataService.groupsWithScores;
   }
 
 }

@@ -5,9 +5,19 @@ export interface Team {
   members: [string, string];
 }
 
+export interface Score {
+  points: number;
+  //goals: number;
+  //goal_difference: number;
+}
+
 export interface Group {
   name: string;
   teams: Team[];
+}
+
+export interface GroupWithScores extends Group {
+  scores: Score[];
 }
 
 export enum MatchState {
@@ -204,243 +214,243 @@ export class GamedataService {
   private _matches: MatchDescription[] = [
     {
       teams: ['Katar', 'Ecuador'],
-      points: [0, 0],
-      state: MatchState.ONGOING
+      points: [1, 0],
+      state: MatchState.ONGOING,
     },
     {
       teams: ['England', 'Iran'],
-      points: [0, 0],
-      state: MatchState.ONGOING
+      points: [2, 2],
+      state: MatchState.ONGOING,
     },
     {
       teams: ['Senegal', 'Niederlande'],
       points: [0, 0],
-      state: MatchState.ONGOING
+      state: MatchState.ONGOING,
     },
     {
       teams: ['USA', 'Wales'],
       points: [0, 0],
-      state: MatchState.ONGOING
+      state: MatchState.ONGOING,
     },
     {
       teams: ['Argentinien', 'Saudi-Arabien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Dänemark', 'Tunesien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Mexiko', 'Polen'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Frankreich', 'Australien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Marokko', 'Kroatien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Deutschland', 'Japan'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Spanien', 'Costa Rica'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Belgien', 'Kanada'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Schweiz', 'Kamerun'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Uruguay', 'Republik Korea'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Portugal', 'Ghana'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Brasilien', 'Serbien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Wales', 'Iran'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Katar', 'Senegal'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Niederlande', 'Ecuador'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['USA', 'England'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Tunesien', 'Australien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Polen', 'Saudi-Arabien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Frankreich', 'Dänemark'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Argentinien', 'Mexiko'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Japan', 'Costa Rica'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Belgien', 'Marokko'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Kroatien', 'Kanada'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Spanien', 'Deutschland'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Kamerun', 'Serbien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Republik Korea', 'Ghana'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Brasilien', 'Schweiz'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Portugal', 'Uruguay'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Ecuador', 'Senegal'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Niederlande', 'Katar'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Iran', 'USA'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Wales', 'England'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Tunesien', 'Frankreich'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Australien', 'Dänemark'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
-      teams: ['Polen', 'Argentinien',],
+      teams: ['Polen', 'Argentinien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Saudi-Arabien', 'Mexiko'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Kroatien', 'Belgien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Kanada', 'Marokko'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Japan', 'Spanien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Costa Rica', 'Deutschland'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Republik Korea', 'Portugal'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Ghana', 'Uruguay'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
       teams: ['Serbien', 'Schweiz'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
     {
-      teams: ['Kamerun', 'Brasilien',],
+      teams: ['Kamerun', 'Brasilien'],
       points: [0, 0],
-      state: MatchState.UPCOMING
+      state: MatchState.UPCOMING,
     },
   ];
 
@@ -469,6 +479,72 @@ export class GamedataService {
 
   get groups(): Group[] {
     return this._groups;
+  }
+
+  get groupsWithScores(): GroupWithScores[] {
+    // Win: 3 Punkte
+    // Even: 1 Punkt
+    // Loss: 0 Punkte
+
+    let groups: Group[] = this.groups;
+    let groupsWithScores: GroupWithScores[] = [];
+
+    groups.forEach((group) => {
+      let scores: Score[] = [];
+
+      group.teams.forEach((team) => {
+        let teamMatches = this._matches.filter((match) =>
+          match.teams.includes(team.name)
+        );
+
+        let score: Score = {
+          points: 0,
+        };
+        teamMatches.forEach((match) => {
+          if (match.state != MatchState.DONE) return;
+
+          let isFirstTeam = match.teams[0] == team.name;
+
+          // First team won
+          if (match.points[0] > match.points[1]) {
+            score.points += isFirstTeam ? 3 : 0;
+          }
+          // Even goals
+          else if (match.points[0] == match.points[1]) {
+            score.points += 1;
+          }
+        });
+
+        scores.push(score);
+      });
+
+      groupsWithScores.push({
+        scores,
+        ...group,
+      });
+    });
+
+    // Sort teams by scores
+    // Done this way because we need to sort the teams and the scores based on the scores
+    groupsWithScores.forEach((group) => {
+      //combine
+      let combined = [];
+      for (let i = 0; i < group.teams.length; i++)
+      combined.push({ team: group.teams[i], score: group.scores[i] });
+
+      //sort
+      //TODO: sort by points then goal difference then total goals
+      combined.sort((a, b) => {return b.score.points - a.score.points});
+
+      //separate again
+      for (let j = 0; j < combined.length; j++) {
+        group.teams[j] = combined[j].team;
+        group.scores[j] = combined[j].score;
+      }
+    });
+
+    //TODO: sort
+    return groupsWithScores;
   }
 
   get teams(): Team[] {
