@@ -214,12 +214,12 @@ export class GamedataService {
   private _matches: MatchDescription[] = [
     {
       teams: ['Katar', 'Ecuador'],
-      points: [1, 0],
+      points: [0, 0],
       state: MatchState.ONGOING,
     },
     {
       teams: ['England', 'Iran'],
-      points: [2, 2],
+      points: [0, 0],
       state: MatchState.ONGOING,
     },
     {

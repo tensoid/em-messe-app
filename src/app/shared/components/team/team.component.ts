@@ -14,8 +14,7 @@ export class TeamComponent implements OnInit {
   team: Team;
 
   ngOnInit(): void {
-
-  }
+}
 
   dataChanged(_: Event) {
     this.dataService.saveData();

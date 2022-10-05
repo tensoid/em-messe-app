@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatchDescription } from '../../services/gamedata.service';
+import { GamedataService, MatchDescription } from '../../services/gamedata.service';
 
 @Component({
   selector: 'app-table',
@@ -8,11 +8,16 @@ import { MatchDescription } from '../../services/gamedata.service';
 })
 export class TableComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dataService: GamedataService) { }
 
   @Input()
   match: MatchDescription;
 
   ngOnInit(): void {
   }
+
+  dataChanged(_: Event) {
+    this.dataService.saveData();
+  }
+
 }
