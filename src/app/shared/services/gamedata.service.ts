@@ -482,13 +482,13 @@ export class GamedataService {
   }
 
   get groupsWithScores(): GroupWithScores[] {
-    // Win: 3 Punkte
-    // Even: 1 Punkt
-    // Loss: 0 Punkte
-
     let groups: Group[] = this.groups;
     let groupsWithScores: GroupWithScores[] = [];
 
+    // Calculate scores for teach team
+    // Win: 3 Points
+    // Even: 1 Points
+    // Loss: 0 Points
     groups.forEach((group) => {
       let scores: Score[] = [];
 
@@ -525,16 +525,19 @@ export class GamedataService {
     });
 
     // Sort teams by scores
-    // Done this way because we need to sort the teams and the scores based on the scores
+    // Done this way because we need to sort both
+    // the teams array and the scores array based on the scores
     groupsWithScores.forEach((group) => {
       //combine
       let combined = [];
       for (let i = 0; i < group.teams.length; i++)
-      combined.push({ team: group.teams[i], score: group.scores[i] });
+        combined.push({ team: group.teams[i], score: group.scores[i] });
 
       //sort
       //TODO: sort by points then goal difference then total goals
-      combined.sort((a, b) => {return b.score.points - a.score.points});
+      combined.sort((a, b) => {
+        return b.score.points - a.score.points;
+      });
 
       //separate again
       for (let j = 0; j < combined.length; j++) {
@@ -543,7 +546,6 @@ export class GamedataService {
       }
     });
 
-    //TODO: sort
     return groupsWithScores;
   }
 
