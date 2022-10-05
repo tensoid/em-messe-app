@@ -596,6 +596,8 @@ export class GamedataService {
       this._matches[i].state = MatchState.ONGOING;
       this._matches[i - 4].state = MatchState.DONE;
     }
+
+    this.saveData();
   }
 
 returnToPreviousMatch() {
