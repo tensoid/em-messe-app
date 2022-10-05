@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import presets from './presets.json';
+
 export interface Team {
   name: string;
   members: [string, string];
@@ -37,428 +39,22 @@ export interface MatchDescription {
 })
 export class GamedataService {
   constructor() {
-    //this.loadData();
+    this.loadData();
   }
 
-  private _groups: Group[] = [
-    {
-      name: 'Gruppe A',
-      teams: [
-        {
-          name: 'Ecuador',
-          members: ['', ''],
-        },
-        {
-          name: 'Niederlande',
-          members: ['', ''],
-        },
-        {
-          name: 'Katar',
-          members: ['', ''],
-        },
-        {
-          name: 'Senegal',
-          members: ['', ''],
-        },
-      ],
-    },
-    {
-      name: 'Gruppe B',
-      teams: [
-        {
-          name: 'England',
-          members: ['', ''],
-        },
-        {
-          name: 'Iran',
-          members: ['', ''],
-        },
-        {
-          name: 'USA',
-          members: ['', ''],
-        },
-        {
-          name: 'Wales',
-          members: ['', ''],
-        },
-      ],
-    },
-    {
-      name: 'Gruppe C',
-      teams: [
-        {
-          name: 'Argentinien',
-          members: ['', ''],
-        },
-        {
-          name: 'Mexiko',
-          members: ['', ''],
-        },
-        {
-          name: 'Polen',
-          members: ['', ''],
-        },
-        {
-          name: 'Saudi-Arabien',
-          members: ['', ''],
-        },
-      ],
-    },
-    {
-      name: 'Gruppe D',
-      teams: [
-        {
-          name: 'Australien',
-          members: ['', ''],
-        },
-        {
-          name: 'Dänemark',
-          members: ['', ''],
-        },
-        {
-          name: 'Frankreich',
-          members: ['', ''],
-        },
-        {
-          name: 'Tunesien',
-          members: ['', ''],
-        },
-      ],
-    },
-    {
-      name: 'Gruppe E',
-      teams: [
-        {
-          name: 'Costa Rica',
-          members: ['', ''],
-        },
-        {
-          name: 'Deutschland',
-          members: ['', ''],
-        },
-        {
-          name: 'Japan',
-          members: ['', ''],
-        },
-        {
-          name: 'Spanien',
-          members: ['', ''],
-        },
-      ],
-    },
-    {
-      name: 'Gruppe F',
-      teams: [
-        {
-          name: 'Belgien',
-          members: ['', ''],
-        },
-        {
-          name: 'Kanada',
-          members: ['', ''],
-        },
-        {
-          name: 'Kroatien',
-          members: ['', ''],
-        },
-        {
-          name: 'Marokko',
-          members: ['', ''],
-        },
-      ],
-    },
-    {
-      name: 'Gruppe G',
-      teams: [
-        {
-          name: 'Brasilien',
-          members: ['', ''],
-        },
-        {
-          name: 'Kamerun',
-          members: ['', ''],
-        },
-        {
-          name: 'Serbien',
-          members: ['', ''],
-        },
-        {
-          name: 'Schweiz',
-          members: ['', ''],
-        },
-      ],
-    },
-    {
-      name: 'Gruppe H',
-      teams: [
-        {
-          name: 'Ghana',
-          members: ['', ''],
-        },
-        {
-          name: 'Portugal',
-          members: ['', ''],
-        },
-        {
-          name: 'Republik Korea',
-          members: ['', ''],
-        },
-        {
-          name: 'Uruguay',
-          members: ['', ''],
-        },
-      ],
-    },
-  ];
+  private _groups: Group[];
 
-  private _matches: MatchDescription[] = [
-    {
-      teams: ['Katar', 'Ecuador'],
-      points: [0, 0],
-      state: MatchState.ONGOING,
-    },
-    {
-      teams: ['England', 'Iran'],
-      points: [0, 0],
-      state: MatchState.ONGOING,
-    },
-    {
-      teams: ['Senegal', 'Niederlande'],
-      points: [0, 0],
-      state: MatchState.ONGOING,
-    },
-    {
-      teams: ['USA', 'Wales'],
-      points: [0, 0],
-      state: MatchState.ONGOING,
-    },
-    {
-      teams: ['Argentinien', 'Saudi-Arabien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Dänemark', 'Tunesien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Mexiko', 'Polen'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Frankreich', 'Australien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Marokko', 'Kroatien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Deutschland', 'Japan'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Spanien', 'Costa Rica'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Belgien', 'Kanada'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Schweiz', 'Kamerun'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Uruguay', 'Republik Korea'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Portugal', 'Ghana'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Brasilien', 'Serbien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Wales', 'Iran'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Katar', 'Senegal'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Niederlande', 'Ecuador'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['USA', 'England'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Tunesien', 'Australien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Polen', 'Saudi-Arabien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Frankreich', 'Dänemark'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Argentinien', 'Mexiko'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Japan', 'Costa Rica'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Belgien', 'Marokko'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Kroatien', 'Kanada'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Spanien', 'Deutschland'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Kamerun', 'Serbien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Republik Korea', 'Ghana'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Brasilien', 'Schweiz'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Portugal', 'Uruguay'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Ecuador', 'Senegal'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Niederlande', 'Katar'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Iran', 'USA'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Wales', 'England'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Tunesien', 'Frankreich'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Australien', 'Dänemark'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Polen', 'Argentinien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Saudi-Arabien', 'Mexiko'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Kroatien', 'Belgien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Kanada', 'Marokko'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Japan', 'Spanien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Costa Rica', 'Deutschland'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Republik Korea', 'Portugal'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Ghana', 'Uruguay'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Serbien', 'Schweiz'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-    {
-      teams: ['Kamerun', 'Brasilien'],
-      points: [0, 0],
-      state: MatchState.UPCOMING,
-    },
-  ];
+  private _matches: MatchDescription[];
 
   saveData() {
     localStorage.setItem('matches', JSON.stringify(this._matches));
     localStorage.setItem('groups', JSON.stringify(this._groups));
   }
 
+  /**
+   * Loads the stored data from the localStorage or loads the
+   * preset data if the localStorage is emtpy or corrupt.
+   */
   loadData() {
     let matches = localStorage.getItem('matches');
     if (matches) {
@@ -468,12 +64,20 @@ export class GamedataService {
       }
     }
 
+    if (!this._matches) {
+      this._matches = presets.matches as MatchDescription[];
+    }
+
     let groups = localStorage.getItem('groups');
     if (groups) {
       let parsed = JSON.parse(groups);
       if (parsed) {
         this._groups = parsed;
       }
+    }
+
+    if (!this._groups) {
+      this._groups = presets.groups as Group[];
     }
   }
 
@@ -624,7 +228,7 @@ returnToPreviousMatch() {
     }
   }
 
-  //TODO: england flagge ändern
+  //TODO: fix flag images / crop them round
 }
 
 
