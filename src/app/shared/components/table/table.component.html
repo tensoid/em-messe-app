@@ -7,9 +7,9 @@
     <img class="table" src="/assets/images/table.png">
    <!-- <div class="points">{{match.points[0]}} : {{match.points[1]}}</div>-->
     <div class="class input-group">
-        <input type="text" [(ngModel)]="match.points[0]" (ngModelChange)="dataChanged($event)" class="team-member">
+        <input type="number" [(ngModel)]="match.points[0]" (ngModelChange)="dataChanged($event)" class="team-member">
         <span>:</span>
-        <input type="text" [(ngModel)]="match.points[1]" (ngModelChange)="dataChanged($event)" class="team-member">
+        <input type="number" [(ngModel)]="match.points[1]" (ngModelChange)="dataChanged($event)" class="team-member">
     </div>
     
 </div>

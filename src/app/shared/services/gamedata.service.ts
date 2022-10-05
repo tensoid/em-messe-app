@@ -109,9 +109,13 @@ export class GamedataService {
 
           let isFirstTeam = match.teams[0] == team.name;
 
-          // First team won
-          if (match.points[0] > match.points[1]) {
-            score.points += isFirstTeam ? 3 : 0;
+          // Team won
+          if (match.points[0] > match.points[1] && isFirstTeam) {
+            score.points += 3;
+          }
+          // Team won
+          else if (match.points[1] > match.points[0] && !isFirstTeam) {
+            score.points += 3;
           }
           // Even goals
           else if (match.points[0] == match.points[1]) {
@@ -175,6 +179,7 @@ export class GamedataService {
   }
 
   startNextMatches() {
+    //TODO: change this to findIndex
     let firstActiveMatch = this._matches.find(
       (match) => match.state == MatchState.ONGOING
     );
@@ -204,33 +209,36 @@ export class GamedataService {
     this.saveData();
   }
 
-returnToPreviousMatch() {
-    let firstOngoingMatch = this._matches.find(
+  returnToPreviousMatch() {
+    let firstOngoingMatchIndex = this._matches.findIndex(
       (match) => match.state == MatchState.ONGOING
     );
 
-    if (firstOngoingMatch == undefined) {
-      return;
-    }
-
-    let firstDonePlayedMatchIndex = this._matches.indexOf(firstOngoingMatch);
-  
-    if (firstDonePlayedMatchIndex == this._matches.length - 3) {
-      for (let i = this._matches.length - 3; i < this._matches.length; i++) {
-        this._matches[i].state = MatchState.UPCOMING;
+    // All matches done
+    if (firstOngoingMatchIndex == -1) {
+      for (let i = this._matches.length - 4; i < this._matches.length; i++) {
+        this._matches[i].state = MatchState.ONGOING;
       }
+    }
+
+    // No matches played so far
+    if (firstOngoingMatchIndex == 0) {
       return;
     }
 
-    for (let i = firstDonePlayedMatchIndex - 4; i < firstDonePlayedMatchIndex ; i++) {
-      this._matches[i].state = MatchState.ONGOING;
-      this._matches[i + 4].state = MatchState.UPCOMING;
+    // Anything in between
+    for (let i = firstOngoingMatchIndex; i < firstOngoingMatchIndex + 4; i++) {
+      this._matches[i].state = MatchState.UPCOMING;
+      this._matches[i - 4].state = MatchState.ONGOING;
     }
+
+    this.saveData();
   }
 
+  //TODO: is last ist first match getter to hide buttons
+  //TODO: 12 dots to go to match random match / goToMatchN func
   //TODO: fix flag images / crop them round
 }
-
 
 //Mannschaft A erzielte 6 Tore und erhielt 2 Gegentore
 //Goalquotient = 6/2=3
