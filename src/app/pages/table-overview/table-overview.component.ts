@@ -15,8 +15,4 @@ export class TableOverviewComponent implements OnInit {
   ngOnInit(): void {
     this.activeMatches = this.dataService.activeMatches;
   }
-
-  startNextMatches(){
-    this.dataService.startNextMatches();
-  }
 }

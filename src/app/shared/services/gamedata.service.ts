@@ -598,8 +598,33 @@ export class GamedataService {
     }
   }
 
+returnToPreviousMatch() {
+    let firstOngoingMatch = this._matches.find(
+      (match) => match.state == MatchState.ONGOING
+    );
+
+    if (firstOngoingMatch == undefined) {
+      return;
+    }
+
+    let firstDonePlayedMatchIndex = this._matches.indexOf(firstOngoingMatch);
+  
+    if (firstDonePlayedMatchIndex == this._matches.length - 3) {
+      for (let i = this._matches.length - 3; i < this._matches.length; i++) {
+        this._matches[i].state = MatchState.UPCOMING;
+      }
+      return;
+    }
+
+    for (let i = firstDonePlayedMatchIndex - 4; i < firstDonePlayedMatchIndex ; i++) {
+      this._matches[i].state = MatchState.ONGOING;
+      this._matches[i + 4].state = MatchState.UPCOMING;
+    }
+  }
+
   //TODO: england flagge ändern
 }
+
 
 //Mannschaft A erzielte 6 Tore und erhielt 2 Gegentore
 //Goalquotient = 6/2=3
