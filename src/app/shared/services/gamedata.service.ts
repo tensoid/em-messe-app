@@ -558,8 +558,16 @@ export class GamedataService {
   }
 
   get nextMatches(): MatchDescription[] {
-    return [];
-    //TODO: implement
+    let firstUpcomingMatchIndex = this._matches.findIndex(
+      (match) => match.state == MatchState.UPCOMING
+    );
+
+    if (firstUpcomingMatchIndex == -1) return [];
+
+    return this._matches.slice(
+      firstUpcomingMatchIndex,
+      firstUpcomingMatchIndex + 4
+    );
   }
 
   startNextMatches() {
