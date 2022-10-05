@@ -4,7 +4,7 @@
 .tree-container{
     display: flex;
     flex-direction: row;
-    height: 600px;
+    height: 100%;
     width: 600px;
 
     &:first-child {
@@ -14,19 +14,20 @@
 
         
     }
+    
 }
 
 .column {
     display: flex;
     flex-direction: column;
     width: 100%;
-
+    
     &:last-child {
         ::after {
-           display: none; 
+            display: none; 
         }
     }
-
+    
     &:first-child {
         ::before {
            display: none; 
@@ -40,7 +41,7 @@ app-bracket {
     justify-content: center;
     align-items: center;
     position: relative;
-
+    
     &::before {
         border-top: $bracket-connector-width solid $bracket-connector-color;
         content: '';
@@ -48,7 +49,7 @@ app-bracket {
         left: 0;
         width: 10%;
     }
-
+    
     &::after {
         content: '';
         position: absolute;
@@ -57,12 +58,12 @@ app-bracket {
         right: 0;
         border-right: $bracket-connector-width $bracket-connector-color solid;
     }
-
+    
     &:nth-child(odd)::after {
         border-top: $bracket-connector-width solid $bracket-connector-color;
         top: 50%;
     }
-
+    
     &:nth-child(even)::after {
         border-bottom: $bracket-connector-width solid $bracket-connector-color;
         bottom: 50%;

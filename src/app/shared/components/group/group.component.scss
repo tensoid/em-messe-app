@@ -1,24 +1,35 @@
 tr {
     display: flex;
-    background-color: gray;
+    background-color: rgb(45, 61, 95);
     margin-bottom: 3px;
     height: 25px;
     width: 300px;
+    color: white;
+    
+    .country-index {
+        text-align: center;
+        flex-basis: 10%;
+        background-color: rgb(34, 66, 134);
+    }
+
+    &:nth-child(-n+2) .country-index {
+        background-color: rgb(87, 214, 236);
+    }
 
     .country-flag {
         width: 45px;
         margin-right: 5px;
+        margin-right: auto;
     }
 
     .country-name {
         
     }
-
+    
     .country-points {
         text-align: center;
         flex-basis: 10%;
-        background-color: rgb(77, 77, 77);
-        color: white;
+        background-color: #333;
         margin-left: auto;
     }
 }

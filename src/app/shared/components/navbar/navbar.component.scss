@@ -5,9 +5,8 @@ nav {
     display: flex;
     align-items: center;
     padding-left: 20px;
-    background-color: $navbar-bg-color;
     padding: 20px;
-    
+
     ul {
         display: flex;
         padding: 0;
@@ -19,11 +18,13 @@ nav {
             
             a {
                 text-decoration: none;
+                color: white;
             }
 
             a.active {
                 text-decoration: underline;
             }
+            
         }
     }
 }

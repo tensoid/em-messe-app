@@ -1,3 +1,5 @@
+@import "variables.scss";
+
 .groups-container {
     display: flex;
     justify-content: center;
@@ -5,6 +7,7 @@
     height: 100%;
     align-content: center;
     row-gap: 100px;
+    color: white;
 }
 
 :host {

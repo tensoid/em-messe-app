@@ -11,6 +11,8 @@ export class GroupOverviewComponent implements OnInit {
 
   constructor(private dataService: GamedataService) { }
 
+  //TODO: punkte zwischenstand und am ende der gruppenphase endergebnis als titel der seite
+
   groups: GroupWithScores[];
 
   ngOnInit(): void {
