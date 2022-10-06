@@ -17,8 +17,20 @@ tr {
         background-color: $points-darkblue;
     }
 
-    &:nth-child(-n+2) .country-index {
-        background-color: $points-lightblue;
+    &:nth-child(-n+2) {
+        .country-index {
+            background-color: $points-lightblue;
+        }
+
+        .country-name {
+            color: rgb(193, 255, 193);
+        }
+    }
+
+    &:nth-last-child(-n+2) {
+        .country-name {
+            color: rgb(255, 193, 193);
+        }
     }
 
     .country-flag {
