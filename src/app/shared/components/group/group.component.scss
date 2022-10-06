@@ -1,19 +1,20 @@
+@import "variables.scss";
+
 tr {
     display: flex;
     background-color: rgb(45, 61, 95);
     margin-bottom: 3px;
     height: 25px;
     width: 300px;
-    color: white;
     
     .country-index {
         text-align: center;
         flex-basis: 10%;
-        background-color: rgb(34, 66, 134);
+        background-color: $points-darkblue;
     }
 
     &:nth-child(-n+2) .country-index {
-        background-color: rgb(87, 214, 236);
+        background-color: $points-lightblue;
     }
 
     .country-flag {

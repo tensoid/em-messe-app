@@ -9,6 +9,8 @@ export class BracketTreeComponent implements OnInit {
 
   constructor() { }
 
+  //TODO: fireworks for winner
+
   ngOnInit(): void {
   }
 
