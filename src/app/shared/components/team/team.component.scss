@@ -1,13 +1,22 @@
 .team-container {
+   
     display: flex;
     flex-direction: column;
     border: 1px solid black;
     width: 90%;
     text-align: center;
+    background-color: transparent;
+    
+    .input {
 
-    .team-name {
-        text-decoration: underline;
+        .team-member {
+            text-decoration: underline;
+            color:rgb(225, 241, 8);    
+            background-color: transparent;
+        }
     }
+    
+    &:hover{background-color: rgb(123, 139, 140);}
 }
 
 :host {
@@ -15,4 +24,6 @@
     flex-basis: 12%;
     justify-content: center;
     align-items: center;
+    
 }
+
