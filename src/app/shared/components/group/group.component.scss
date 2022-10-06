@@ -1,8 +1,12 @@
 @import "variables.scss";
 
+
+.group-label {
+    margin-bottom: 5px;
+}
+
 tr {
     display: flex;
-    background-color: rgb(45, 61, 95);
     margin-bottom: 3px;
     height: 25px;
     width: 300px;
@@ -24,18 +28,22 @@ tr {
     }
 
     .country-name {
-        
+        background-color: $group-team-bg-color;
+        flex-grow: 1;
+        text-align: center;
     }
     
     .country-points {
         text-align: center;
         flex-basis: 10%;
-        background-color: #333;
+        background-color: $points-gray;
         margin-left: auto;
     }
 }
 
 :host {
+    background-color: rgba(0, 0, 0, 0.377);
+    padding: 5px;
     display: flex;
     flex-direction: column;
     align-items: center;
