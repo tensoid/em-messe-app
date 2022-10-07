@@ -2,7 +2,7 @@
    
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 1px solid rgb(255, 255, 255);
     width: 90%;
     text-align: center;
     background-color:rgba(255,255,255,0.5);
@@ -14,6 +14,7 @@
             text-decoration: underline;
             color:yellow;    
             background-color: transparent;
+            border-color: rgba(99, 97, 97, 0.4);
         }
     }
     
@@ -30,30 +31,33 @@
     
 }
 
+.red-border{
+    border: 2px solid red;
+    animation: pulse 2s infinite;
+    
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(255, 0, 0);
+    width: 90%;
+    text-align: center;
+    background-color:rgba(255, 0, 0, 0.5);
 
-.uncomplete {
-box-shadow: 0 0 0 0 rgba(0, 0, 0, 1);
-transform: scale(1);
-animation: pulse 2s infinite;
-background-color:grey;
-
-
-@keyframes pulse {
-    0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.7);
-    }
-
-    70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-    }
-
-    100%{
+    @keyframes pulse {
+        0% {
             transform: scale(0.95);
-            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
         }
-    }
+    
+        70% {
+            transform: scale(1);
+            box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        }
+    
+        100%{
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
 
 }
 
