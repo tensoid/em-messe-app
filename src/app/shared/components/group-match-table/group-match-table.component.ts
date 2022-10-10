@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { GamedataService, MatchDescription } from '../../services/gamedata.service';
 
 @Component({
-  selector: 'app-table',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  selector: 'app-group-match-table',
+  templateUrl: './group-match-table.component.html',
+  styleUrls: ['./group-match-table.component.scss']
 })
-export class TableComponent implements OnInit {
+export class GroupMatchTableComponent implements OnInit {
 
   constructor(private dataService: GamedataService) { }
 
@@ -19,5 +19,4 @@ export class TableComponent implements OnInit {
   dataChanged(_: Event) {
     this.dataService.saveData();
   }
-
 }

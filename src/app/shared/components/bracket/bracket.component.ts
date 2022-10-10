@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { KOMatchDescription, MatchState } from '../../services/gamedata.service';
 
 @Component({
   selector: 'app-bracket',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class BracketComponent implements OnInit {
 
   constructor() { }
+
+  @Input()
+  match: KOMatchDescription;
 
   ngOnInit(): void {
   }

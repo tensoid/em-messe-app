@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { GamedataService } from 'src/app/shared/services/gamedata.service';
 
 @Component({
   selector: 'app-bracket-tree',
   templateUrl: './bracket-tree.component.html',
   styleUrls: ['./bracket-tree.component.scss']
 })
-export class BracketTreeComponent implements OnInit {
+export class BracketTreeComponent {
 
-  constructor() { }
+  constructor(public dataService: GamedataService) {  }
 
   //TODO: fireworks for winner
-
-  ngOnInit(): void {
-  }
-
 }

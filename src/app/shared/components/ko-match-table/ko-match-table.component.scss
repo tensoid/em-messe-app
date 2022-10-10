@@ -1,0 +1,45 @@
+.table-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin-bottom: 50px;
+
+    .versus-container {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+        height: 100%;
+        
+        .flag {
+            max-width: 100px;
+        }   
+        .versus {
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+
+    .table {
+        width: 30%;
+        transform: rotate(90deg);
+        margin-bottom: 20px;
+    }
+
+    .points {
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+
+:host {
+    flex-basis: 35%;
+    align-items: center;
+    justify-content: center;
+}

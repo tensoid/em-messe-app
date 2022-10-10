@@ -1,12 +1,20 @@
 <div class="title">ARGE Tischfußball Weltmeisterschaft</div>
+<div *ngIf="this.dataService.currentRound != -1" class="round">Round {{this.dataService.currentRound}}</div>
 <div class="next-games"><strong>Nächsten Partien:</strong> England vs. Südafrika, USA vs. Japan, Südkorea vs. Australien, Marokko vs. Italien</div>
-<div class="tables-container">
-    <app-table
-    *ngFor="let match of this.dataService.activeMatches"
+<div class="tables-container" *ngIf="!this.dataService.groupPhaseDone">
+    <app-group-match-table
+    *ngFor="let match of this.dataService.activeGroupPhaseMatches"
     [match]="match">
-    </app-table>
+    </app-group-match-table>
 </div>
-<div class="class input-group">
-    <button (click)="this.dataService.returnToPreviousMatch()">Previous Games</button>
+<div class="tables-container" *ngIf="this.dataService.groupPhaseDone">
+    <app-ko-match-table
+    *ngFor="let match of this.dataService.activeKOMatches"
+    [match]="match">
+    </app-ko-match-table>
+</div>
+<div class="input-group">
+    <!--TODO: only show in group phase the previous button-->
+    <button (click)="this.dataService.returnToPreviousMatches()">Previous Games</button>
     <button (click)="this.dataService.startNextMatches()">Next Games</button>
 </div>

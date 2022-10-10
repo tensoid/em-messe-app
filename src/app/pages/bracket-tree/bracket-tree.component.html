@@ -1,43 +1,59 @@
 <div class="round-titles-container">
-    <div class="round-title">Achtelfinale</div>
-    <div class="round-title">Viertelfinale</div>
-    <div class="round-title">Halbfinale</div>
-    <div class="round-title">Finale</div>
-    <div class="round-title">Halbfinale</div>
-    <div class="round-title">Viertelfinale</div>
-    <div class="round-title">Achtelfinale</div>
+  <div class="round-title">Achtelfinale</div>
+  <div class="round-title">Viertelfinale</div>
+  <div class="round-title">Halbfinale</div>
+  <div class="round-title">Finale</div>
+  <div class="round-title">Halbfinale</div>
+  <div class="round-title">Viertelfinale</div>
+  <div class="round-title">Achtelfinale</div>
 </div>
 <div class="tree-container">
-    <div class="column">
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-
-    </div>
-    <div class="column">
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-    </div>
-    <div class="column">
-        <app-bracket></app-bracket>
-    </div>
-    <div class="column">
-        <div class="title">WELTMEISTER DEUTSCHLAND</div>
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-    </div>
-    <div class="column">
-        <app-bracket></app-bracket>
-    </div>
-    <div class="column">
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-    </div>
-    <div class="column">
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-        <app-bracket></app-bracket>
-    </div>
+  <div class="column">
+    <app-bracket
+      *ngFor="let match of this.dataService.KOPhaseMatches[0].slice(0, 4)"
+      [match]="match"
+    >
+    </app-bracket>
+  </div>
+  <div class="column">
+    <app-bracket
+      *ngFor="let match of this.dataService.KOPhaseMatches[1].slice(0, 2)"
+      [match]="match"
+    >
+    </app-bracket>
+  </div>
+  <div class="column">
+    <app-bracket
+      *ngFor="let match of this.dataService.KOPhaseMatches[2].slice(0, 1)"
+      [match]="match"
+    >
+    </app-bracket>
+  </div>
+  <div class="column">
+    <div class="title">WELTMEISTER DEUTSCHLAND</div>
+    <app-bracket
+    [match]="this.dataService.KOPhaseMatches[3][0]">
+    </app-bracket>
+  </div>
+  <div class="column">
+    <app-bracket
+      *ngFor="let match of this.dataService.KOPhaseMatches[2].slice(1, 2)"
+      [match]="match"
+    >
+    </app-bracket>
+  </div>
+  <div class="column">
+    <app-bracket
+      *ngFor="let match of this.dataService.KOPhaseMatches[1].slice(2, 4)"
+      [match]="match"
+    >
+    </app-bracket>
+  </div>
+  <div class="column">
+    <app-bracket
+      *ngFor="let match of this.dataService.KOPhaseMatches[0].slice(4, 8)"
+      [match]="match"
+    >
+    </app-bracket>
+  </div>
 </div>

@@ -15,6 +15,8 @@
     border-radius: 4px;
     background-color: $bracket-bg-color;
     padding: 2px;
+    min-height: 42px;
+    justify-content: space-between;
 
     /*
     :first-child {
@@ -38,10 +40,16 @@
 
     //.name {}
 
-    .points {
-        background-color: $points-lightblue;
-        text-align: center;
-        margin-left: auto;
-        min-width: 25px;
+    .goals-container {
+
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+
+        .goals {
+            background-color: $points-lightblue;
+            text-align: center;
+            min-width: 18px;
+        }
     }
 }

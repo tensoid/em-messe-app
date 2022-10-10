@@ -10,6 +10,8 @@ export class GroupComponent implements OnInit {
 
   constructor() { }
 
+  //TODO: name coloring only if games have been played
+
   @Input()
   group: GroupWithScores;
 
