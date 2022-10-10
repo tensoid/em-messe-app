@@ -29,7 +29,7 @@ export enum MatchState {
 }
 
 export interface MatchDescription {
-  teams: [string, string];
+  teamNames: [string, string];
   goals: [number, number];
   state: MatchState;
 }
@@ -143,7 +143,7 @@ export class GamedataService {
 
       group.teams.forEach((team) => {
         let teamMatches = this._groupPhaseMatches.filter((match) =>
-          match.teams.includes(team.name)
+          match.teamNames.includes(team.name)
         );
 
         let score: Score = {
@@ -152,7 +152,7 @@ export class GamedataService {
         teamMatches.forEach((match) => {
           if (match.state != MatchState.DONE) return;
 
-          let isFirstTeam = match.teams[0] == team.name;
+          let isFirstTeam = match.teamNames[0] == team.name;
           score.points += this.getPointsFromGoals(match.goals, isFirstTeam);
         });
 
@@ -261,6 +261,16 @@ export class GamedataService {
   get KOPhaseRoundIndex(): number {
     return this._KOPhaseRoundIndex;
   }
+
+  /**
+   * Returns the winner or an empty string if KOPhase is not over yet.
+   */
+  // get KOPhaseWinner(): string {
+
+  //   if(!this._KOPhaseDone) return '';
+
+  //   //return this._KOPhaseMatches
+  // }
 
   /**
    * Starts either the next group phase or KO phase matches depending on what phase is currently being played
@@ -436,8 +446,8 @@ export class GamedataService {
     groupsWithScores.forEach((group, i) => {
       let winningTeamsInGroup = group.teams.slice(0, 2);
       
-      this.KOPhaseMatches[0][i].teams[0] = winningTeamsInGroup[0].name;
-      this.KOPhaseMatches[0][i].teams[1] = winningTeamsInGroup[1].name;
+      this.KOPhaseMatches[0][i].teamNames[0] = winningTeamsInGroup[0].name;
+      this.KOPhaseMatches[0][i].teamNames[1] = winningTeamsInGroup[1].name;
     });
 
     //set first 4 to ongoing
@@ -459,10 +469,10 @@ export class GamedataService {
         let teamIndex = i % 2;
   
         if(winsTeam1 > 1) {
-          this._KOPhaseMatches[nextKORoundIndex][matchIndex].teams[teamIndex] = match.teams[0];
+          this._KOPhaseMatches[nextKORoundIndex][matchIndex].teamNames[teamIndex] = match.teamNames[0];
         }
         else {
-          this._KOPhaseMatches[nextKORoundIndex][matchIndex].teams[teamIndex] = match.teams[1];
+          this._KOPhaseMatches[nextKORoundIndex][matchIndex].teamNames[teamIndex] = match.teamNames[1];
         }
   
         //TODO: do not allow even goals in ko phase table view
@@ -476,6 +486,19 @@ export class GamedataService {
       }
 
       this._KOPhaseRoundIndex++;
+  }
+
+  /**
+   * 
+   * @param {KOMatchDescription} match 
+   * @returns {string} teamName
+   */
+  private getWinnerFromKOMatch(match: KOMatchDescription): string {
+
+    let winCountTeam1 = match.goals.filter(goals => goals[0] > goals[1]).length;
+
+    if(winCountTeam1 > 1) return match.teamNames[0];
+    else return match.teamNames[1];
   }
 
   
