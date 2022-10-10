@@ -10,8 +10,12 @@ body {
 }
 body {
   margin: 0;
-  font-family: Overpass;
-  background-image: $page-bg-gradient, url("/assets/images/backgrounds/arena.jpg");
+  background-image: $page-bg-gradient,
+    url("/assets/images/backgrounds/arena.jpg");
   background-size: cover;
   color: white;
+}
+
+* {
+  font-family: Overpass;
 }

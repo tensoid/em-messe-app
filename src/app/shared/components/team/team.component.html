@@ -1,16 +1,29 @@
 <div class="team-container">
-    <div class="team-name">{{team.name}}</div> 
-    <div>
-        <img class="country-flag" src="/assets/images/flags/{{team.name}}.png" width="100" height="56,3">
-    </div>
+  <div class="team-name">{{ team.name }}</div>
+  <div>
+    <img
+      class="country-flag"
+      src="/assets/images/flags/{{ team.name }}.png"
+      width="100"
+      height="56,3"
+    />
+  </div>
 
-
-    <div class="input" [ngClass]="{'red-border': !team.members[0] || !team.members[1]}">
-            
-        <input  placeholder="Bitte eintragen" [(ngModel)]="team.members[0]" 
-        (ngModelChange)="dataChanged($event)" class="team-member">
-        <input placeholder="Bitte eintragen" [(ngModel)]="team.members[1]"
-        (ngModelChange)="dataChanged($event)" class="team-member">
-        
-    </div>
+  <div
+    class="team-member-inputs"
+    [ngClass]="{ 'red-border': !team.members[0] || !team.members[1] }"
+  >
+    <input
+      placeholder="Bitte eintragen"
+      [(ngModel)]="team.members[0]"
+      (ngModelChange)="dataChanged($event)"
+      class="team-member"
+    />
+    <input
+      placeholder="Bitte eintragen"
+      [(ngModel)]="team.members[1]"
+      (ngModelChange)="dataChanged($event)"
+      class="team-member"
+    />
+  </div>
 </div>
