@@ -6,6 +6,9 @@ import { environment } from './environments/environment';
 
 if (environment.production) {
   enableProdMode();
+
+  // Popup window to confirm closing or refreshing the webpage in production mode
+  window.addEventListener("beforeunload", (e) => e.returnValue = null);
 }
 
 platformBrowserDynamic().bootstrapModule(AppModule)
