@@ -15,6 +15,8 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { TeamOverviewComponent } from './pages/team-overview/team-overview.component';
 import { FormsModule } from '@angular/forms';
 import { KoMatchTableComponent } from './shared/components/ko-match-table/ko-match-table.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,13 @@ import { KoMatchTableComponent } from './shared/components/ko-match-table/ko-mat
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
