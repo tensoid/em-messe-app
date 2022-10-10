@@ -15,5 +15,4 @@ export class BracketComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

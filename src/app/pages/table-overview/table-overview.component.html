@@ -1,6 +1,6 @@
 <div class="title">ARGE Tischfußball Weltmeisterschaft</div>
 <div *ngIf="this.dataService.currentRound != -1" class="round">Round {{this.dataService.currentRound}}</div>
-<div class="next-games"><strong>Nächsten Partien:</strong> England vs. Südafrika, USA vs. Japan, Südkorea vs. Australien, Marokko vs. Italien</div>
+<div *ngIf="!this.dataService.groupPhaseDone" class="next-games"><strong>Nächsten Partien:</strong> {{this.dataService.nextMatchesAsFormattedString}}</div>
 <div class="tables-container" *ngIf="!this.dataService.groupPhaseDone">
     <app-group-match-table
     *ngFor="let match of this.dataService.activeGroupPhaseMatches"

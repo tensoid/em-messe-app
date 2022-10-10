@@ -46,9 +46,6 @@ export class GamedataService {
   private _groups: Group[];
   private _groupPhaseMatches: MatchDescription[];
   private _KOPhaseMatches: KOMatchDescription[][];
-  private _KOPhaseRoundIndex: number = 0;
-  private _groupPhaseDone: boolean = false;
-  private _KOPhaseDone: boolean = false;
 
   constructor() {
     this.loadData();
@@ -61,9 +58,6 @@ export class GamedataService {
     this.saveLocalStorageItem('groupPhaseMatches', this._groupPhaseMatches);
     this.saveLocalStorageItem('groups', this._groups);
     this.saveLocalStorageItem('KOPhaseMatches', this._KOPhaseMatches);
-    this.saveLocalStorageItem('KOPhaseRoundIndex', this._KOPhaseRoundIndex);
-    this.saveLocalStorageItem('groupPhaseDone', this._groupPhaseDone);
-    this.saveLocalStorageItem('KOPhaseDone', this._KOPhaseDone);
   }
 
   /**
@@ -88,19 +82,6 @@ export class GamedataService {
     this._KOPhaseMatches = KOPhaseMatches
       ? KOPhaseMatches
       : (presets.KOPhaseMatches as KOMatchDescription[][]);
-
-    // this._KOPhaseRoundIndex
-    let KOPhaseRoundIndex =
-      this.getLocalStorageItem<number>('KOPhaseRoundIndex');
-    this._KOPhaseRoundIndex = KOPhaseRoundIndex ? KOPhaseRoundIndex : 0;
-
-    // this._groupPhaseDone
-    let groupPhaseDone = this.getLocalStorageItem<boolean>('groupPhaseDone');
-    this._groupPhaseDone = groupPhaseDone ? groupPhaseDone : false;
-
-    // this._KOPhaseDone
-    let KOPhaseDone = this.getLocalStorageItem<boolean>('KOPhaseDone');
-    this._KOPhaseDone = KOPhaseDone ? KOPhaseDone : false;
   }
 
   /**
@@ -194,8 +175,6 @@ export class GamedataService {
   }
 
   get activeGroupPhaseMatches(): MatchDescription[] {
-    if (this.groupPhaseDone) return [];
-
     return this._groupPhaseMatches.filter(
       (match) => match.state == MatchState.ONGOING
     );
@@ -203,27 +182,23 @@ export class GamedataService {
 
   get activeKOMatches(): KOMatchDescription[] {
     if (!this.groupPhaseDone) return [];
-    if (this._KOPhaseDone) return [];
+    if (this.KOPhaseDone) return [];
 
-    return this._KOPhaseMatches[this.KOPhaseRoundIndex].filter(
-      (match) => match.state == MatchState.ONGOING
-    );
+    return this._KOPhaseMatches
+      .flat()
+      .filter((match) => match.state == MatchState.ONGOING);
   }
 
-  get nextMatches(): MatchDescription[] {
-    //TODO: next matches
-    throw Error('Not implemented');
+  /**
+   * Returns the next matches formatted for the table-overview
+   * @example Team1 vs Team2, Team3 vs Team4 ...
+   */
+  get nextMatchesAsFormattedString(): string {
+    if (this.groupPhaseDone) return '';
 
-    let firstUpcomingMatchIndex = this._groupPhaseMatches.findIndex(
-      (match) => match.state == MatchState.UPCOMING
-    );
-
-    if (firstUpcomingMatchIndex == -1) return [];
-
-    return this._groupPhaseMatches.slice(
-      firstUpcomingMatchIndex,
-      firstUpcomingMatchIndex + 4
-    );
+    return this.nextGroupPhaseMatches
+      .map((match) => `${match.teamNames[0]} vs. ${match.teamNames[1]}`)
+      .join(', ');
   }
 
   get KOPhaseMatches(): KOMatchDescription[][] {
@@ -231,7 +206,19 @@ export class GamedataService {
   }
 
   get groupPhaseDone(): boolean {
-    return this._groupPhaseDone;
+    return this.activeGroupPhaseMatches.length == 0;
+  }
+
+  get KOPhaseDone(): boolean {
+    return (
+      this._KOPhaseMatches
+        .flat()
+        .filter(
+          (match) =>
+            match.state == MatchState.ONGOING ||
+            match.state == MatchState.UPCOMING
+        ).length == 0
+    );
   }
 
   /**
@@ -256,14 +243,36 @@ export class GamedataService {
   }
 
   get KOPhaseRoundIndex(): number {
-    return this._KOPhaseRoundIndex;
+    let firstUpcomingMatch = this._KOPhaseMatches
+      .flat()
+      .find((match) => match.state != MatchState.DONE);
+
+    if (firstUpcomingMatch == undefined) return 3;
+    return this._KOPhaseMatches.findIndex((matches) =>
+      matches.includes(firstUpcomingMatch as KOMatchDescription)
+    );
+  }
+
+  private get nextGroupPhaseMatches(): MatchDescription[] {
+    if (this.groupPhaseDone) return [];
+
+    let firstActiveMatchIndex = this._groupPhaseMatches.findIndex(
+      (match) => match.state == MatchState.ONGOING
+    );
+
+    if (firstActiveMatchIndex == this._groupPhaseMatches.length - 4) return [];
+
+    return this._groupPhaseMatches.slice(
+      firstActiveMatchIndex + 4,
+      firstActiveMatchIndex + 8
+    );
   }
 
   /**
    * Returns the winner or an empty string if KOPhase is not over yet.
    */
   get KOPhaseWinner(): string {
-    if (!this._KOPhaseDone) return '';
+    if (!this.KOPhaseDone) return '';
 
     return this.getWinnerFromKOMatch(this._KOPhaseMatches[3][0]);
   }
@@ -280,64 +289,39 @@ export class GamedataService {
   }
 
   private startNextGroupPhaseMatches() {
-    if (this._groupPhaseDone) return;
+    if (this.groupPhaseDone) return;
 
-    let firstActiveMatchIndex = this._groupPhaseMatches.findIndex(
-      (match) => match.state == MatchState.ONGOING
-    );
+    let activeMatches = this.activeGroupPhaseMatches;
+    let nextMatches = this.nextGroupPhaseMatches;
 
-    // This should not happen due to the preset setting the first 4 matches to ONGOING
-    if (firstActiveMatchIndex == -1) {
-      return;
+    for (let match of activeMatches) {
+      match.state = MatchState.DONE;
     }
 
-    // All matches done
-    if (firstActiveMatchIndex == this._groupPhaseMatches.length - 4) {
-      for (
-        let i = this._groupPhaseMatches.length - 4;
-        i < this._groupPhaseMatches.length;
-        i++
-      ) {
-        this._groupPhaseMatches[i].state = MatchState.DONE;
-      }
-
-      this._groupPhaseDone = true;
-
-      return;
-    }
-
-    // Anything in between
-    for (let i = firstActiveMatchIndex; i < firstActiveMatchIndex + 4; i++) {
-      this._groupPhaseMatches[i].state = MatchState.DONE;
-      this._groupPhaseMatches[i + 4].state = MatchState.ONGOING;
+    for (let match of nextMatches) {
+      match.state = MatchState.ONGOING;
     }
   }
 
   private startNextKOPhaseMatches() {
-    if (this._KOPhaseDone) return;
+    if (this.KOPhaseDone) return;
 
     // Between Group Phase and KO Phase
-    if (
-      this._KOPhaseRoundIndex == 0 &&
-      this._KOPhaseMatches[0].filter(
-        (match) => match.state == MatchState.ONGOING
-      ).length == 0
-    ) {
+    if (this.KOPhaseRoundIndex == 0 && this.activeKOMatches.length == 0) {
       this.startKOPhase();
       return;
     }
 
-    let matchesInCurrentKORound = this._KOPhaseMatches[this._KOPhaseRoundIndex];
-    let ongoingMatches = matchesInCurrentKORound.filter(
-      (match) => match.state == MatchState.ONGOING
-    );
-
-    let matchRound = ongoingMatches[0].round;
+    let upcomingMatchesInKORound = this._KOPhaseMatches[
+      this.KOPhaseRoundIndex
+    ].filter((match) => match.state == MatchState.UPCOMING);
+    let activeMatches = this.activeKOMatches;
+    let activeMatchesRound = activeMatches[0].round;
 
     // Not all match rounds for currently competing teams done
-    if (matchRound < 3) {
-      // not all match rounds done increase round counter by one
-      for (let match of ongoingMatches) {
+    // so increase the round count by 1
+    if (activeMatchesRound < 3) {
+      for (let match of activeMatches) {
         match.round++;
       }
 
@@ -346,44 +330,26 @@ export class GamedataService {
 
     // All 3 match rounds for currently competing teams done
     // Set ongoing matches to done
-    for (let match of ongoingMatches) {
+    for (let match of activeMatches) {
       match.state = MatchState.DONE;
     }
-
-    let upcomingMatchesInKORound = matchesInCurrentKORound.filter(
-      (match) => match.state === MatchState.UPCOMING
-    );
 
     // No more teams left to compete in KO round so start next KO round
     // This automatically starts the next koround because of the KORoundIndex getter
     if (upcomingMatchesInKORound.length == 0) {
-      // No more KO rounds left
-      if (this._KOPhaseRoundIndex == 3) {
-        this._KOPhaseDone = true;
-
-        return;
-      }
-
       this.startNextKOPhaseRound();
       return;
     }
 
     // More teams left to compete in KO round so
-    // set next 4 matches in KO round to ongoing
-    if (upcomingMatchesInKORound.length > 4) {
-      for (let i = 0; i < 4; i++) {
-        upcomingMatchesInKORound[i].state = MatchState.ONGOING;
-      }
-    } else {
-      for (let match of upcomingMatchesInKORound) {
-        match.state = MatchState.ONGOING;
-      }
+    for (let match of upcomingMatchesInKORound) {
+      match.state = MatchState.ONGOING;
     }
   }
 
   returnToPreviousMatches() {
     //TODO: return in KO Phase matches allowed?
-    if (this._groupPhaseDone) return;
+    if (this.groupPhaseDone) return;
 
     let firstOngoingMatchIndex = this._groupPhaseMatches.findIndex(
       (match) => match.state == MatchState.ONGOING
@@ -449,18 +415,21 @@ export class GamedataService {
   }
 
   private startNextKOPhaseRound() {
-    let matchesInCurrentKORound = this._KOPhaseMatches[this._KOPhaseRoundIndex];
-    let nextKORoundIndex = this._KOPhaseRoundIndex + 1;
+    if (this.KOPhaseDone) return;
+
+    let matchesInPreviousKORound =
+      this._KOPhaseMatches[this.KOPhaseRoundIndex - 1];
 
     // Populate next matches with winners from previous matches
-    matchesInCurrentKORound.forEach((match, i) => {
+    matchesInPreviousKORound.forEach((match, i) => {
       let winnerTeamName = this.getWinnerFromKOMatch(match);
 
       let matchIndex = Math.floor(i / 2);
       let teamIndex = i % 2;
 
-      this._KOPhaseMatches[nextKORoundIndex][matchIndex].teamNames[teamIndex] =
-        winnerTeamName;
+      this._KOPhaseMatches[this.KOPhaseRoundIndex][matchIndex].teamNames[
+        teamIndex
+      ] = winnerTeamName;
 
       //TODO: do not allow even goals in ko phase table view
     });
@@ -468,13 +437,12 @@ export class GamedataService {
     //set first 4 to ongoing
     for (
       let i = 0;
-      i < Math.min(4, this._KOPhaseMatches[nextKORoundIndex].length);
+      i < Math.min(4, this._KOPhaseMatches[this.KOPhaseRoundIndex].length);
       i++
     ) {
-      this._KOPhaseMatches[nextKORoundIndex][i].state = MatchState.ONGOING;
+      this._KOPhaseMatches[this.KOPhaseRoundIndex][i].state =
+        MatchState.ONGOING;
     }
-
-    this._KOPhaseRoundIndex++;
   }
 
   /**
