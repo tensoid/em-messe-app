@@ -106,6 +106,21 @@ export class GamedataService {
 
   // --- Getters --- //
 
+  get tableOverviewTitle(): string {
+    
+    if(!this.groupPhaseDone) {
+      return "Gruppenphase"
+    }
+    else if(!this.KOPhaseDone && this.groupPhaseDone) {
+      if(this.KOPhaseRoundIndex == 0) return "Achtelfinale";
+      if(this.KOPhaseRoundIndex == 1) return "Viertelfinale";
+      if(this.KOPhaseRoundIndex == 2) return "Halbfinale";
+      if(this.KOPhaseRoundIndex == 3) return "Finale";
+    }
+
+    return "";
+  }
+
   get groups(): Group[] {
     return this._groups;
   }
@@ -168,6 +183,11 @@ export class GamedataService {
     });
 
     return groupsWithScores;
+  }
+
+  getTeamMembersFromTeamName(teamName: string): [string, string] {
+    let team = this.teams.find(team => team.name === teamName)?.members;
+    return team ? team : ["", ""];
   }
 
   get teams(): Team[] {

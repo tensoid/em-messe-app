@@ -1,20 +1,156 @@
-<div class="title">ARGE Tischfußball Weltmeisterschaft</div>
-<div *ngIf="this.dataService.currentRound != -1" class="round">Round {{this.dataService.currentRound}}</div>
-<div *ngIf="!this.dataService.groupPhaseDone" class="next-games"><strong>Nächsten Partien:</strong> {{this.dataService.nextMatchesAsFormattedString}}</div>
+<h1>{{ this.dataService.tableOverviewTitle }}</h1>
+
+<div *ngIf="this.dataService.currentRound != -1" class="round">
+  Round {{ this.dataService.currentRound }}
+</div>
+<div *ngIf="!this.dataService.groupPhaseDone" class="next-games">
+  <strong>Nächsten Partien:</strong>
+  {{ this.dataService.nextMatchesAsFormattedString }}
+</div>
 <div class="tables-container" *ngIf="!this.dataService.groupPhaseDone">
-    <app-group-match-table
-    *ngFor="let match of this.dataService.activeGroupPhaseMatches"
-    [match]="match">
-    </app-group-match-table>
+  <div
+    class="table"
+    *ngFor="let match of this.dataService.activeGroupPhaseMatches; index as i"
+  >
+    <div class="title">Tisch {{ i + 1 }}</div>
+
+    <div class="teams-container">
+      <div class="team">
+        <img
+          class="flag"
+          src="/assets/images/flags/{{ match.teamNames[0] }}.png"
+        />
+
+        <div class="members-container">
+          <div
+            *ngFor="
+              let member of this.dataService.getTeamMembersFromTeamName(
+                match.teamNames[0]
+              )
+            "
+            class="member"
+          >
+            {{ member }}
+          </div>
+        </div>
+
+        <input
+          type="number"
+          min="0"
+          max="10"
+          oninput="validity.valid||(value='0');"
+          [(ngModel)]="match.goals[0]"
+          (ngModelChange)="dataChanged($event)"
+        />
+      </div>
+
+      <div class="versus">vs.</div>
+
+      <div class="team">
+        <img
+          class="flag"
+          src="/assets/images/flags/{{ match.teamNames[1] }}.png"
+        />
+
+        <div class="members-container">
+          <div
+            *ngFor="
+              let member of this.dataService.getTeamMembersFromTeamName(
+                match.teamNames[1]
+              )
+            "
+            class="member"
+          >
+            {{ member }}
+          </div>
+        </div>
+
+        <input
+          type="number"
+          min="0"
+          max="10"
+          oninput="validity.valid||(value='0');"
+          [(ngModel)]="match.goals[1]"
+          (ngModelChange)="dataChanged($event)"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 <div class="tables-container" *ngIf="this.dataService.groupPhaseDone">
-    <app-ko-match-table
-    *ngFor="let match of this.dataService.activeKOMatches"
-    [match]="match">
-    </app-ko-match-table>
+  <div
+    class="table"
+    *ngFor="let match of this.dataService.activeKOMatches; index as i"
+  >
+    <div class="title">Tisch {{ i + 1 }}</div>
+
+    <div class="teams-container">
+      <div class="team">
+        <img
+          class="flag"
+          src="/assets/images/flags/{{ match.teamNames[0] }}.png"
+        />
+
+        <div class="members-container">
+          <div
+            *ngFor="
+              let member of this.dataService.getTeamMembersFromTeamName(
+                match.teamNames[0]
+              )
+            "
+            class="member"
+          >
+            {{ member }}
+          </div>
+        </div>
+
+        <input
+          type="number"
+          min="0"
+          max="10"
+          oninput="validity.valid||(value='0');"
+          [(ngModel)]="match.goals[match.round - 1][0]"
+          (ngModelChange)="dataChanged($event)"
+        />
+      </div>
+
+      <div class="versus">vs.</div>
+
+      <div class="team">
+        <img
+          class="flag"
+          src="/assets/images/flags/{{ match.teamNames[1] }}.png"
+        />
+
+        <div class="members-container">
+          <div
+            *ngFor="
+              let member of this.dataService.getTeamMembersFromTeamName(
+                match.teamNames[1]
+              )
+            "
+            class="member"
+          >
+            {{ member }}
+          </div>
+        </div>
+
+        <input
+          type="number"
+          min="0"
+          max="10"
+          oninput="validity.valid||(value='0');"
+          [(ngModel)]="match.goals[match.round - 1][1]"
+          (ngModelChange)="dataChanged($event)"
+        />
+      </div>
+    </div>
+  </div>
 </div>
 <div class="input-group">
-    <!--TODO: only show in group phase the previous button-->
-    <button (click)="this.dataService.returnToPreviousMatches()">Previous Games</button>
-    <button (click)="this.dataService.startNextMatches()">Next Games</button>
+  <!--TODO: only show in group phase the previous button-->
+  <button (click)="this.dataService.returnToPreviousMatches()">
+    &larr; Back
+  </button>
+  <button (click)="this.dataService.startNextMatches()">Next &rarr;</button>
 </div>

@@ -10,7 +10,9 @@ export class TableOverviewComponent implements OnInit {
 
   constructor(public dataService: GamedataService) {}
 
-  //TODO: after group phase done remove next games with is groupPhaseDone getter
-
   ngOnInit(): void {}
+
+  dataChanged(_: Event) {
+    this.dataService.saveData();
+  }
 }
