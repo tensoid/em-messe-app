@@ -4,9 +4,9 @@
       <img src="/assets/images/flags/{{match.teamNames[0]}}.png" class="flag" alt=""/>
       <div class="name">{{match.teamNames[0].substring(0, 3).toUpperCase()}}</div>
       <div class="goals-container">
-        <div class="goals">{{match.state == 2 ? match.goals[0][0] : 0}}</div>
-        <div class="goals">{{match.state == 2 ? match.goals[1][0] : 0}}</div>
-        <div class="goals">{{match.state == 2 ? match.goals[2][0] : 0}}</div>
+        <div class="goals">{{match.goals[0][0]}}</div>
+        <div class="goals">{{match.goals[1][0]}}</div>
+        <div class="goals">{{match.goals[2][0]}}</div>
       </div>
     </div>
 
@@ -14,9 +14,9 @@
       <img src="/assets/images/flags/{{match.teamNames[1]}}.png" class="flag" alt=""/>
       <div class="name">{{match.teamNames[1].substring(0, 3).toUpperCase()}}</div>
       <div class="goals-container">
-        <div class="goals">{{match.state == 2 ? match.goals[0][1] : 0}}</div>
-        <div class="goals">{{match.state == 2 ? match.goals[1][1] : 0}}</div>
-        <div class="goals">{{match.state == 2 ? match.goals[2][1] : 0}}</div>
+        <div class="goals">{{match.goals[0][1]}}</div>
+        <div class="goals">{{match.goals[1][1]}}</div>
+        <div class="goals">{{match.goals[2][1]}}</div>
       </div>
     </div>
   </div>

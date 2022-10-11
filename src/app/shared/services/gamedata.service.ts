@@ -51,8 +51,6 @@ export class GamedataService {
     this.loadData();
   }
 
-  //TODO: update bracket tree after every match
-
   /**
    * Saves all important information to localStorage
    */
