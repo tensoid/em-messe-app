@@ -1,3 +1,4 @@
+<h1>K.O. Phase</h1>
 <div class="round-titles-container">
   <div class="round-title">Achtelfinale</div>
   <div class="round-title">Viertelfinale</div>
@@ -7,7 +8,7 @@
   <div class="round-title">Viertelfinale</div>
   <div class="round-title">Achtelfinale</div>
 </div>
-<div *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-title">WELTMEISTER {{this.dataService.KOPhaseWinner.toUpperCase()}}</div>
+<h1 *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-title">WELTMEISTER {{this.dataService.KOPhaseWinner.toUpperCase()}}</h1>
 <div class="tree-container">
   <div class="column">
     <app-bracket
