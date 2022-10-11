@@ -442,16 +442,23 @@ export class GamedataService {
     }
   }
 
+  /**
+   * Populates the first KO. round with the group phase winners and starts first 4 matches.
+   */
   private startKOPhase() {
-    // populate with group phase winners
+
     let groupsWithScores = this.groupsWithScores;
+    
+    for(let i = 0; i < groupsWithScores.length; i+=2) {
 
-    groupsWithScores.forEach((group, i) => {
-      let winningTeamsInGroup = group.teams.slice(0, 2);
+      let winnersGroup1 = groupsWithScores[i].teams.slice(0, 2);
+      let winnersGroup2 = groupsWithScores[i+1].teams.slice(0, 2);
 
-      this.KOPhaseMatches[0][i].teamNames[0] = winningTeamsInGroup[0].name;
-      this.KOPhaseMatches[0][i].teamNames[1] = winningTeamsInGroup[1].name;
-    });
+      this.KOPhaseMatches[0][i].teamNames[0] = winnersGroup1[0].name;
+      this.KOPhaseMatches[0][i].teamNames[1] = winnersGroup2[1].name;
+      this.KOPhaseMatches[0][i+1].teamNames[0] = winnersGroup1[1].name;
+      this.KOPhaseMatches[0][i+1].teamNames[1] = winnersGroup2[0].name;
+    }
 
     //set first 4 to ongoing
     for (let i = 0; i < 4; i++) {
