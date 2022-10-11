@@ -1,8 +1,30 @@
 @import "variables.scss";
 
 
-.group-label {
-    margin-bottom: 5px;
+.table-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+
+    th {
+        font-size: 15px;
+    }
+
+    th.group-label {
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    :nth-child(3) {
+        margin-right: 6px;
+    }
+
+    :nth-child(2) {
+        margin-right: 15px;
+    }
+    :nth-child(1) {
+        margin-right: auto;
+    }
 }
 
 tr {
@@ -11,13 +33,14 @@ tr {
     height: 25px;
     width: 300px;
     
+    
     .country-index {
         text-align: center;
         flex-basis: 10%;
         background-color: $points-darkblue;
     }
 
-    &:nth-child(-n+2) {
+    &:nth-child(2), &:nth-child(3) {
         .country-index {
             background-color: $points-lightblue;
         }
@@ -44,12 +67,17 @@ tr {
         flex-grow: 1;
         text-align: center;
     }
-    
-    .country-points {
-        text-align: center;
-        flex-basis: 10%;
-        background-color: $points-gray;
-        margin-left: auto;
+
+    .scores {
+
+        display: flex;
+        flex-basis: 35%;
+
+        td {
+            text-align: center;
+            background-color: $points-gray;
+            flex-grow: 1;
+        }
     }
 }
 

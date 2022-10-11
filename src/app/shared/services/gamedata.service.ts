@@ -9,8 +9,8 @@ export interface Team {
 
 export interface Score {
   points: number;
-  //goals: number;
-  //goal_difference: number;
+  goalRatio: [number, number];
+  goalDifference: number;
 }
 
 export interface Group {
@@ -50,6 +50,8 @@ export class GamedataService {
   constructor() {
     this.loadData();
   }
+
+  //TODO: update bracket tree after every match
 
   /**
    * Saves all important information to localStorage
@@ -141,14 +143,28 @@ export class GamedataService {
           match.teamNames.includes(team.name)
         );
 
+        //TODO: get score from matches function
         let score: Score = {
           points: 0,
+          goalDifference: 0,
+          goalRatio: [0, 0]
         };
         teamMatches.forEach((match) => {
           if (match.state != MatchState.DONE) return;
 
           let isFirstTeam = match.teamNames[0] == team.name;
           score.points += this.getPointsFromGoals(match.goals, isFirstTeam);
+
+          if(isFirstTeam) {
+            score.goalRatio[0] += match.goals[0];
+            score.goalRatio[1] += match.goals[1];
+          }
+          else {
+            score.goalRatio[0] += match.goals[1];
+            score.goalRatio[1] += match.goals[0];
+          }
+          
+          score.goalDifference = score.goalRatio[0] - score.goalRatio[1];
         });
 
         scores.push(score);
@@ -169,10 +185,19 @@ export class GamedataService {
       for (let i = 0; i < group.teams.length; i++)
         combined.push({ team: group.teams[i], score: group.scores[i] });
 
-      //sort
-      //TODO: sort by points then goal difference then total goals
+      //sort by points then goal difference then goal Ratio + L + Fell Off
       combined.sort((a, b) => {
-        return b.score.points - a.score.points;
+
+        if(a.score.points > b.score.points) return -1;
+        if(a.score.points < b.score.points) return 1;
+
+        if(a.score.goalDifference > b.score.goalDifference) return -1;
+        if(a.score.goalDifference < b.score.goalDifference) return 1;
+        
+        if(a.score.goalRatio[0] > b.score.goalRatio[0]) return -1;
+        if(a.score.goalRatio[0] < b.score.goalRatio[0]) return 1;
+
+        return 0;
       });
 
       //separate again

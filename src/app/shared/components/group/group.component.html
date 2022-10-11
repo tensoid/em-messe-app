@@ -1,11 +1,20 @@
-<div class="group-label">{{group.name}}</div>
 <table>
-    <tbody>
-        <tr *ngFor="let team of group.teams; index as i">
-            <td class="country-index">{{i + 1}}</td>
-            <img class="country-flag" src="/assets/images/flags/{{team.name}}.png">
-            <td class="country-name">{{team.name}}</td>
-            <td class="country-points">{{group.scores[i].points}}</td>
-        </tr>
-    </tbody>
+  <tr class="table-head">
+    <th class="group-label">{{ group.name }}</th>
+    <th>VH</th>
+    <th>Dif</th>
+    <th>Pkt</th>
+  </tr>
+  <tr *ngFor="let team of group.teams; index as i">
+    <td class="country-index">{{ i + 1 }}</td>
+    <img class="country-flag" src="/assets/images/flags/{{ team.name }}.png" />
+    <td class="country-name">{{ team.name }}</td>
+    <div class="scores">
+      <td class="goal-ratio">
+        {{ group.scores[i].goalRatio[0] }} : {{ group.scores[i].goalRatio[1] }}
+      </td>
+      <td class="goal-difference">{{ group.scores[i].goalDifference }}</td>
+      <td class="points">{{ group.scores[i].points }}</td>
+    </div>
+  </tr>
 </table>
