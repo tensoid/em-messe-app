@@ -14,22 +14,25 @@ export class NavbarComponent implements OnInit {
   }
 
   @HostListener('window:keyup', ['$event'])
-  keyEvent(event: KeyboardEvent) {
+  keyUpEvent(event: KeyboardEvent) {
 
-    switch (event.key) {
-      case "1": 
+    if(!event.shiftKey) return;
+
+    switch (event.code) {
+
+      case "Digit1": 
         this.router.navigate(['/group-overview']);
         break;
 
-      case "2": 
+      case "Digit2": 
         this.router.navigate(['/bracket-tree']);
         break;
 
-      case "3": 
+      case "Digit3": 
         this.router.navigate(['/team-overview']);
         break;
 
-      case "4": 
+      case "Digit4": 
         this.router.navigate(['/table-overview']);
         break;
 
