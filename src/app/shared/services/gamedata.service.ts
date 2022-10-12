@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 
 import presets from './presets.json';
@@ -49,7 +50,7 @@ export class GamedataService {
   private _groupPhaseMatches: MatchDescription[];
   private _KOPhaseMatches: KOMatchDescription[][];
 
-  constructor() {
+  constructor(private router: Router) {
     this.loadData();
   }
 
@@ -446,8 +447,8 @@ export class GamedataService {
   private startKOPhase() {
 
     if (environment.production) {
-      window.location.href = "/group-overview";
-    }    
+      this.router.navigate(["/group-overview"]);
+    }
 
     let groupsWithScores = this.groupsWithScores;
     
@@ -469,6 +470,11 @@ export class GamedataService {
   }
 
   private startNextKOPhaseRound() {
+
+    if (environment.production) {
+      this.router.navigate(["/bracket-tree"]);
+    }
+
     if (this.KOPhaseDone) return;
 
     let matchesInPreviousKORound =
