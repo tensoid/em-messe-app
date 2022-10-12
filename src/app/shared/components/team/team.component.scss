@@ -1,9 +1,11 @@
+@import "variables.scss";
+
 .team-container {
   display: flex;
   flex-direction: column;
   width: 90%;
   text-align: center;
-  background-color: rgba(0, 0, 0, 0.377);
+  background-color: $transparent-black;
 
   .team-member-inputs {
     .team-member {

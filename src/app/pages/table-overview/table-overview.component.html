@@ -1,7 +1,7 @@
 <h1>{{ this.dataService.tableOverviewTitle }}</h1>
 
 <div *ngIf="this.dataService.currentRound != -1" class="round">
-  Round {{ this.dataService.currentRound }}
+  Runde {{ this.dataService.currentRound }} von {{ this.dataService.groupPhaseDone ? 3 : 12}}
 </div>
 <div *ngIf="!this.dataService.groupPhaseDone" class="next-games">
   <strong>Nächsten Partien:</strong>

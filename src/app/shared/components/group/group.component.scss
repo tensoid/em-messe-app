@@ -82,7 +82,7 @@ tr {
 }
 
 :host {
-    background-color: rgba(0, 0, 0, 0.377);
+    background-color: $transparent-black;
     padding: 5px;
     display: flex;
     flex-direction: column;

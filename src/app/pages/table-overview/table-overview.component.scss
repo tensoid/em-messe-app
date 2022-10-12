@@ -1,9 +1,14 @@
+@import "variables.scss";
+
 .next-games {
     margin-bottom: 50px;
-    background-color: rgba(0, 0, 0, 0.377);
+    background-color: $transparent-black;
     padding: 10px;
 }
 
+.round {
+    font-size: 30px;
+}
 
 .tables-container {
 
@@ -23,6 +28,9 @@
         justify-content: center;
         align-items: center;
         border: 1px solid white;
+        background-color: $transparent-black;
+        border-radius: 20px;
+        margin: 20px;
         
         .title {
             font-size: 40px;
@@ -50,6 +58,7 @@
     
                 .flag {
                     width: 50%;
+                    margin-bottom: 20px;
                 }
 
                 .members {
@@ -61,7 +70,7 @@
                     border: none;
                     color: white;
                     text-align: center;
-                    font-size: 20px;
+                    font-size: 30px;
         
                     &::-webkit-inner-spin-button {
                         appearance: none;
