@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 import presets from './presets.json';
 
@@ -38,6 +39,7 @@ export interface KOMatchDescription extends Omit<MatchDescription, 'goals'> {
   round: number;
   goals: Array<[number, number]>;
 }
+
 
 @Injectable({
   providedIn: 'root',
@@ -344,16 +346,14 @@ export class GamedataService {
     for (let match of nextMatches) {
       match.state = MatchState.ONGOING;
     }
+
+    if(nextMatches.length == 0) {
+      this.startKOPhase();
+    }
   }
 
   private startNextKOPhaseMatches() {
     if (this.KOPhaseDone) return;
-
-    // Between Group Phase and KO Phase
-    if (this.KOPhaseRoundIndex == 0 && this.activeKOMatches.length == 0) {
-      this.startKOPhase();
-      return;
-    }
 
     let upcomingMatchesInKORound = this._KOPhaseMatches[
       this.KOPhaseRoundIndex
@@ -444,6 +444,10 @@ export class GamedataService {
    * Populates the first KO. round with the group phase winners and starts first 4 matches.
    */
   private startKOPhase() {
+
+    if (environment.production) {
+      window.location.href = "/group-overview";
+    }    
 
     let groupsWithScores = this.groupsWithScores;
     
