@@ -30,6 +30,10 @@
     height: 100%;
     display: flex;
     align-items: center;
+
+    &.winner {
+        background-color: rgb(0, 160, 0);
+    }
     
     .flag {
         flex-basis: 15%;

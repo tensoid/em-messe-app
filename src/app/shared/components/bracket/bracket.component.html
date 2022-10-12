@@ -1,6 +1,6 @@
 <div class="bracket-wrapper">
   <div class="bracket">
-    <div class="team" *ngIf="match.teamNames[0] != ''">
+    <div [ngClass]="{'winner': this.winnerIndex == 0}" class="team" *ngIf="match.teamNames[0] != ''">
       <img src="/assets/images/flags/{{match.teamNames[0]}}.png" class="flag" alt=""/>
       <div class="name">{{match.teamNames[0].substring(0, 3).toUpperCase()}}</div>
       <div class="goals-container">
@@ -10,7 +10,7 @@
       </div>
     </div>
 
-    <div class="team" *ngIf="match.teamNames[0] != ''">
+    <div [ngClass]="{'winner': this.winnerIndex == 1}" class="team" *ngIf="match.teamNames[0] != ''">
       <img src="/assets/images/flags/{{match.teamNames[1]}}.png" class="flag" alt=""/>
       <div class="name">{{match.teamNames[1].substring(0, 3).toUpperCase()}}</div>
       <div class="goals-container">

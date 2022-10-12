@@ -8,53 +8,83 @@
   <div class="round-title">Viertelfinale</div>
   <div class="round-title">Achtelfinale</div>
 </div>
-<h1 *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-title">WELTMEISTER {{this.dataService.KOPhaseWinner.toUpperCase()}}</h1>
+<h1 *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-title">
+  WELTMEISTER {{ this.dataService.KOPhaseWinner.toUpperCase() }}
+</h1>
 <div class="tree-container">
   <div class="column">
-    <app-bracket
-      *ngFor="let match of this.dataService.KOPhaseMatches[0].slice(0, 4)"
-      [match]="match"
-    >
-    </app-bracket>
+    <div *ngIf="this.dataService.groupPhaseDone" class="brackets-container">
+      <app-bracket
+        *ngFor="let match of this.dataService.KOPhaseMatches[0].slice(0, 4)"
+        [match]="match"
+      >
+      </app-bracket>
+    </div>
   </div>
   <div class="column">
-    <app-bracket
-      *ngFor="let match of this.dataService.KOPhaseMatches[1].slice(0, 2)"
-      [match]="match"
+    <div
+      *ngIf="this.dataService.KOPhaseRoundIndex > 0"
+      class="brackets-container"
     >
-    </app-bracket>
+      <app-bracket
+        *ngFor="let match of this.dataService.KOPhaseMatches[1].slice(0, 2)"
+        [match]="match"
+      >
+      </app-bracket>
+    </div>
   </div>
   <div class="column">
-    <app-bracket
-      *ngFor="let match of this.dataService.KOPhaseMatches[2].slice(0, 1)"
-      [match]="match"
+    <div
+      *ngIf="this.dataService.KOPhaseRoundIndex > 1"
+      class="brackets-container"
     >
-    </app-bracket>
+      <app-bracket
+        *ngFor="let match of this.dataService.KOPhaseMatches[2].slice(0, 1)"
+        [match]="match"
+      >
+      </app-bracket>
+    </div>
   </div>
   <div class="column">
-    <app-bracket
-    [match]="this.dataService.KOPhaseMatches[3][0]">
-    </app-bracket>
+    <div
+      *ngIf="this.dataService.KOPhaseRoundIndex > 2"
+      class="brackets-container"
+    >
+      <app-bracket [match]="this.dataService.KOPhaseMatches[3][0]">
+      </app-bracket>
+    </div>
   </div>
   <div class="column">
-    <app-bracket
-      *ngFor="let match of this.dataService.KOPhaseMatches[2].slice(1, 2)"
-      [match]="match"
+    <div
+      *ngIf="this.dataService.KOPhaseRoundIndex > 1"
+      class="brackets-container"
     >
-    </app-bracket>
+      <app-bracket
+        *ngFor="let match of this.dataService.KOPhaseMatches[2].slice(1, 2)"
+        [match]="match"
+      >
+      </app-bracket>
+    </div>
   </div>
   <div class="column">
-    <app-bracket
-      *ngFor="let match of this.dataService.KOPhaseMatches[1].slice(2, 4)"
-      [match]="match"
+    <div
+      *ngIf="this.dataService.KOPhaseRoundIndex > 0"
+      class="brackets-container"
     >
-    </app-bracket>
+      <app-bracket
+        *ngFor="let match of this.dataService.KOPhaseMatches[1].slice(2, 4)"
+        [match]="match"
+      >
+      </app-bracket>
+    </div>
   </div>
   <div class="column">
-    <app-bracket
-      *ngFor="let match of this.dataService.KOPhaseMatches[0].slice(4, 8)"
-      [match]="match"
-    >
-    </app-bracket>
+    <div *ngIf="this.dataService.groupPhaseDone" class="brackets-container">
+      <app-bracket
+        *ngFor="let match of this.dataService.KOPhaseMatches[0].slice(4, 8)"
+        [match]="match"
+      >
+      </app-bracket>
+    </div>
   </div>
 </div>
