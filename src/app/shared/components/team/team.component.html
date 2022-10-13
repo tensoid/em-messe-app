@@ -18,12 +18,14 @@
       [(ngModel)]="team.members[0]"
       (ngModelChange)="dataChanged($event)"
       class="team-member"
+      maxlength="15"
     />
     <input
       placeholder="Bitte eintragen"
       [(ngModel)]="team.members[1]"
       (ngModelChange)="dataChanged($event)"
       class="team-member"
+      maxlength="15"
     />
   </div>
 </div>
