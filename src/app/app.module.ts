@@ -15,6 +15,7 @@ import { TeamOverviewComponent } from './pages/team-overview/team-overview.compo
 import { FormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
