@@ -1,142 +1,89 @@
 @import "variables.scss";
 
-.next-games {
+:host {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  .next-games {
     margin-bottom: 25px;
     background-color: $transparent-black;
     padding: 10px;
-}
+  }
 
-.round {
-    font-size: 30px;
-}
+  .round {
+    font-size: 25px;
+    margin: 4px 0 4px 0;
+  }
 
-.tables-container {
-
+  .tables-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     height: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
     .table {
-        
+      display: flex;
+      flex-basis: 35%;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid rgba(255, 255, 255, 0.158);
+      background-color: $transparent-black;
+      border-radius: 10px;
+      margin: 5px;
+
+      .title {
+        font-size: 30px;
+        font-weight: bold;
+        margin: 15px 0 15px 0;
+      }
+
+      .teams-container {
         display: flex;
-        flex-basis: 35%;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
-        border: 1px solid white;
-        background-color: $transparent-black;
-        border-radius: 20px;
-        margin: 5px;
-        
-        .title {
-            font-size: 40px;
-            font-weight: bold;
-        }
-
-        .teams-container {
-
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-
-            .versus {
-                font-size: 30px;
-                font-weight: bold;
-            }
-
-            .team {
-    
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-    
-                .flag {
-                    width: 50%;
-                    margin-bottom: 10px;
-                }
-
-                .members-container {
-                    margin-bottom: 10px;
-                    text-align: center;
-                }
-        
-                input {
-                    background: transparent;
-                    border: none;
-                    color: white;
-                    text-align: center;
-                    font-size: 30px;
-        
-                    &::-webkit-inner-spin-button {
-                        appearance: none;
-                    }
-                }
-            }
-        }
-
 
         .versus {
-
+          font-size: 30px;
+          font-weight: bold;
         }
-    }
-}
 
+        .team {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
 
-.tables-container {
-    .table {
-        .versus-container {
-    
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            
-            .flag {
-                
-            }   
-            .versus {
-                margin-left: 10px;
-                margin-right: 10px;
+          .flag {
+            width: 38%;
+            margin-bottom: 10px;
+          }
+
+          .members-container {
+            margin-bottom: 10px;
+            text-align: center;
+          }
+
+          input {
+            background: transparent;
+            border: none;
+            color: white;
+            text-align: center;
+            font-size: 30px;
+
+            &::-webkit-inner-spin-button {
+              appearance: none;
             }
+          }
         }
-    
-        .points {
-            font-size: 20px;
-            font-weight: bold;
-        }
-    
-        .inputs-container {
-            
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-evenly;
-        }
+      }
     }
-}
-
-button {
-    background-color: rgb(36, 36, 36);
-    color: white;
-    border: 1px gray solid;
-    padding: 10px 30px 10px 30px;
-    font-size: 15px;
-
-    &:nth-child(1) {
-        margin-right: 10px;
-    }
-}
-
-:host {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1;
+  }
 }
