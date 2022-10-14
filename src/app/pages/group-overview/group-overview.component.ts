@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GamedataService, GroupWithScores } from 'src/app/shared/services/gamedata.service';
+import { GamedataService } from 'src/app/shared/services/gamedata.service';
+import { GroupWithScores } from 'src/app/shared/services/interfaces';
 
 
 @Component({

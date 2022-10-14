@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GamedataService, Team } from 'src/app/shared/services/gamedata.service';
+import { GamedataService } from 'src/app/shared/services/gamedata.service';
+import { Team } from 'src/app/shared/services/interfaces';
 
 @Component({
   selector: 'app-team-overview',

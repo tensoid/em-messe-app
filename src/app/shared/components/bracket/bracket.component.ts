@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { KOMatchDescription, MatchState } from '../../services/gamedata.service';
+import { KOMatchDescription, MatchState } from '../../services/interfaces';
 
 @Component({
   selector: 'app-bracket',

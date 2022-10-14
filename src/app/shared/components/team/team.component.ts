@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
-import { GamedataService, Team } from '../../services/gamedata.service';
+import { GamedataService } from '../../services/gamedata.service';
+import { Team } from '../../services/interfaces';
 
 @Component({
   selector: 'app-team',
