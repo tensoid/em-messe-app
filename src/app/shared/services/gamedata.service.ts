@@ -33,7 +33,7 @@ export class GamedataService {
   // --- Data Saving / Loading --- //
 
   /**
-   * Saves all the necessary data to localStorage
+   * Saves all the necessary data to localStorage.
    */
   saveData() {
     this.saveLocalStorageItem('groupPhaseMatches', this._groupPhaseMatches);
@@ -66,7 +66,7 @@ export class GamedataService {
   }
 
   /**
-   * Returns the item for the given key from the localStorage or undefined if it doesn't exist
+   * Returns the item for the given key from the localStorage or undefined if it doesn't exist.
    * @param key Name of the key
    */
   private getLocalStorageItem<T>(key: string): T | undefined {
@@ -87,7 +87,7 @@ export class GamedataService {
   // --- Getters --- //
 
   /**
-   * Returns the title of the table overview depending on what phase or KO round is currently being played
+   * Returns the title of the table overview depending on what phase or KO round is currently being played.
    * @example Gruppenphase, Achtelfinale, Viertelfinale, Halbfinale, Finale
    */
   get tableOverviewTitle(): string {
@@ -108,7 +108,7 @@ export class GamedataService {
   }
 
   /**
-   * Returns the groups with additional information of the scores for each team
+   * Returns the groups with additional information of the scores for each team.
    */
   get groupsWithScores(): GroupWithScores[] {
     let groups: Group[] = this._groups;
@@ -126,28 +126,7 @@ export class GamedataService {
           match.teamNames.includes(team.name)
         );
 
-        //TODO: get score from matches function
-        let score: Score = {
-          points: 0,
-          goalDifference: 0,
-          goalRatio: [0, 0],
-        };
-        teamMatches.forEach((match) => {
-          if (match.state != MatchState.DONE) return;
-
-          let isFirstTeam = match.teamNames[0] == team.name;
-          score.points += this.getPointsFromGoals(match.goals, isFirstTeam);
-
-          if (isFirstTeam) {
-            score.goalRatio[0] += match.goals[0];
-            score.goalRatio[1] += match.goals[1];
-          } else {
-            score.goalRatio[0] += match.goals[1];
-            score.goalRatio[1] += match.goals[0];
-          }
-
-          score.goalDifference = score.goalRatio[0] - score.goalRatio[1];
-        });
+        let score: Score = this.getScoreFromMatches(teamMatches, team.name);
 
         scores.push(score);
       });
@@ -158,9 +137,9 @@ export class GamedataService {
       });
     });
 
-    // Sort teams by scores
+    // Sort teams by scores.
     // Done this way because we need to sort both
-    // the teams array and the scores array based on the scores
+    // the teams array and the scores array based on the scores.
     groupsWithScores.forEach((group) => {
       //combine
       let combined = [];
@@ -192,6 +171,38 @@ export class GamedataService {
   }
 
   /**
+   * Returns the score for a team in the given matches.
+   * @param matches
+   * @param teamName
+   */
+  getScoreFromMatches(matches: MatchDescription[], teamName: string): Score {
+    let score: Score = {
+      points: 0,
+      goalDifference: 0,
+      goalRatio: [0, 0],
+    };
+
+    matches.forEach((match) => {
+      if (match.state != MatchState.DONE) return;
+
+      let isFirstTeam = match.teamNames[0] == teamName;
+      score.points += this.getPointsFromGoals(match.goals, isFirstTeam);
+
+      if (isFirstTeam) {
+        score.goalRatio[0] += match.goals[0];
+        score.goalRatio[1] += match.goals[1];
+      } else {
+        score.goalRatio[0] += match.goals[1];
+        score.goalRatio[1] += match.goals[0];
+      }
+
+      score.goalDifference = score.goalRatio[0] - score.goalRatio[1];
+    });
+
+    return score;
+  }
+
+  /**
    * Returns the team members of the given team name.
    * @param teamName
    */
@@ -205,7 +216,7 @@ export class GamedataService {
   }
 
   /**
-   * Returns the currently playing matches for the Group Phase
+   * Returns the currently playing matches for the Group Phase.
    */
   get activeGroupPhaseMatches(): MatchDescription[] {
     return this._groupPhaseMatches.filter(
@@ -214,7 +225,7 @@ export class GamedataService {
   }
 
   /**
-   * Returns the currently playing matches for the KO Phase
+   * Returns the currently playing matches for the KO Phase.
    */
   get activeKOMatches(): KOMatchDescription[] {
     if (!this.groupPhaseDone) return [];
@@ -226,7 +237,7 @@ export class GamedataService {
   }
 
   /**
-   * Returns the next matches formatted for the table-overview
+   * Returns the next matches formatted for the table-overview.
    * @example Team1 vs Team2, Team3 vs Team4 ...
    */
   get nextMatchesAsFormattedString(): string {
@@ -279,7 +290,7 @@ export class GamedataService {
   }
 
   /**
-   * Returns the index of the KO Round
+   * Returns the index of the KO Round.
    */
   get KOPhaseRoundIndex(): number {
     let firstUpcomingMatch = this._KOPhaseMatches
