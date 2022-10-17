@@ -9,6 +9,4 @@ import { GamedataService } from 'src/app/shared/services/gamedata.service';
 export class BracketTreeComponent {
 
   constructor(public dataService: GamedataService) {  }
-
-  //TODO: fireworks for winner
 }

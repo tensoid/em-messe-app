@@ -1,19 +1,18 @@
 @import "variables.scss";
 
-
 .round-titles-container {
-    flex-basis: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    position: relative;
+  flex-basis: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  position: relative;
 
-    .round-title {
-        flex-basis: calc(100% / 7);
-        text-align: center;
-    }
+  .round-title {
+    flex-basis: calc(100% / 7);
+    text-align: center;
+  }
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.37);
 }
 
 .winner-title {
@@ -31,7 +30,6 @@
   width: 100%;
 
   .column {
-    
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -47,7 +45,7 @@
         border-top: $bracket-connector-width solid $bracket-connector-color;
         top: 50%;
       }
-      
+
       :nth-child(even)::after {
         border-bottom: $bracket-connector-width solid $bracket-connector-color;
         bottom: 50%;
@@ -56,7 +54,6 @@
 
     // First 3 columns
     &:nth-child(-n + 3) {
-
       app-bracket::before {
         border-top: $bracket-connector-width solid $bracket-connector-color;
         content: "";
@@ -84,9 +81,9 @@
         height: 50%;
         left: 0;
         border-left: $bracket-connector-width $bracket-connector-color solid;
-    }
-    
-    app-bracket::before {
+      }
+
+      app-bracket::before {
         border-top: $bracket-connector-width solid $bracket-connector-color;
         content: "";
         position: absolute;
@@ -97,7 +94,6 @@
 
     // Middle column
     &:nth-child(4) {
-
       .brackets-container {
         justify-content: center;
       }
@@ -151,4 +147,159 @@ app-bracket {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/*
+Copyright (c) 2022 by Eddie Lin (https://codepen.io/yshlin/pen/WNMmQX)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), 
+to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, 
+sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
+IN THE SOFTWARE.
+*/
+$particles: 50;
+$width: 500;
+$height: 500;
+
+// Create the explosion...
+$box-shadow: ();
+$box-shadow2: ();
+@for $i from 0 through $particles {
+  $box-shadow: $box-shadow,
+    random($width)-$width /
+      2 +
+      px
+      random($height)-$height /
+      1.2 +
+      px
+      hsl(random(360), 100, 50);
+  $box-shadow2: $box-shadow2, 0 0 #fff;
+}
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+
+  @-ms-keyframes #{$animationName} {
+    @content;
+  }
+
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation-delay($settings) {
+  -moz-animation-delay: $settings;
+  -webkit-animation-delay: $settings;
+  -o-animation-delay: $settings;
+  -ms-animation-delay: $settings;
+  animation-delay: $settings;
+}
+
+@mixin animation-duration($settings) {
+  -moz-animation-duration: $settings;
+  -webkit-animation-duration: $settings;
+  -o-animation-duration: $settings;
+  -ms-animation-duration: $settings;
+  animation-duration: $settings;
+}
+
+@mixin animation($settings) {
+  -moz-animation: $settings;
+  -webkit-animation: $settings;
+  -o-animation: $settings;
+  -ms-animation: $settings;
+  animation: $settings;
+}
+
+@mixin transform($settings) {
+  transform: $settings;
+  -moz-transform: $settings;
+  -webkit-transform: $settings;
+  -o-transform: $settings;
+  -ms-transform: $settings;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  overflow: hidden;
+}
+
+.firework > .before,
+.firework > .after {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  box-shadow: $box-shadow2;
+  @include animation(
+    (
+      1s bang ease-out infinite backwards,
+      1s gravity ease-in infinite backwards,
+      5s position linear infinite backwards
+    )
+  );
+}
+
+.firework > .after {
+  @include animation-delay((1.25s, 1.25s, 1.25s));
+  @include animation-duration((1.25s, 1.25s, 6.25s));
+}
+
+@include keyframes(bang) {
+  to {
+    box-shadow: $box-shadow;
+  }
+}
+
+@include keyframes(gravity) {
+  to {
+    @include transform(translateY(200px));
+    opacity: 0;
+  }
+}
+
+@include keyframes(position) {
+  0%,
+  19.9% {
+    margin-top: 10%;
+    margin-left: 40%;
+  }
+  20%,
+  39.9% {
+    margin-top: 40%;
+    margin-left: 30%;
+  }
+  40%,
+  59.9% {
+    margin-top: 20%;
+    margin-left: 70%;
+  }
+  60%,
+  79.9% {
+    margin-top: 30%;
+    margin-left: 20%;
+  }
+  80%,
+  99.9% {
+    margin-top: 30%;
+    margin-left: 80%;
+  }
 }
