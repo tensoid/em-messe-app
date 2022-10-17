@@ -519,8 +519,6 @@ export class GamedataService {
       this._KOPhaseMatches[this.KOPhaseRoundIndex][matchIndex].teamNames[
         teamIndex
       ] = winnerTeamName;
-
-      //TODO: do not allow even goals in ko phase table view
     });
 
     //set first 4 to ongoing
@@ -533,8 +531,4 @@ export class GamedataService {
         MatchState.ONGOING;
     }
   }
-
-  //TODO: is last ist first match getter to hide buttons
-  // for this ^ just check if next matches length is zero and if groupPhaseDone or not, should work
-  //TODO: 12 dots to go to match random match / goToMatchN func
 }
