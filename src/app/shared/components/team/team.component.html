@@ -1,8 +1,10 @@
-<div class="team-container">
-  <div class="team-name">{{ team.name }}</div>
+<div class="team-container" 
+[ngClass]="{ 'red-border': !team.members[0] || !team.members[1], 
+'green-border': team.members[0] && team.members[1] }"> 
+  <div class="team-name" >{{ team.name }} </div>
   <div>
     <img
-      class="country-flag"
+      class="country-flag" 
       src="/assets/images/flags/{{ team.name }}.png"
       width="100"
       height="56,3"
@@ -10,9 +12,7 @@
   </div>
 
   <div
-    class="team-member-inputs"
-    [ngClass]="{ 'red-border': !team.members[0] || !team.members[1] }"
-  >
+    class="team-member-inputs">
     <input
       placeholder="Bitte eintragen"
       [(ngModel)]="team.members[0]"
@@ -28,4 +28,6 @@
       maxlength="15"
     />
   </div>
+
 </div>
+

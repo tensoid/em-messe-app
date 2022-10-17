@@ -7,14 +7,13 @@
   text-align: center;
   background-color: $transparent-black;
 
-  .red-border {
-
+  &.red-border {
     animation: pulse 2s infinite;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgb(255, 0, 0);
-    text-align: center;
-    background-color: rgba(255, 0, 0, 0.5);
+    border: 5px solid rgb(200, 85, 85);
+    background-color: rgb(166, 47, 47);
+    
   
     @keyframes pulse {
       0% {
@@ -34,6 +33,12 @@
     }
   }
 
+  &.green-border {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid rgb(57, 121, 63);
+    background-color: rgb(65, 140, 81);
+    }
   .team-member-inputs {
 
     display: flex;
@@ -64,8 +69,10 @@
   }
 
   &:hover {
-    background-color: rgb(123, 139, 140);
+    background-color: rgb(75, 70, 90);
+    border-color: rgb(75, 70, 90);
   }
+  
 }
 
 :host {
