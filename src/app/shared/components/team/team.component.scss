@@ -1,83 +1,70 @@
 @import "variables.scss";
 
-.team-container {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  text-align: center;
-  background-color: $transparent-black;
-
-  &.red-border {
-    animation: pulse 2s infinite;
-    display: flex;
-    flex-direction: column;
-    border: 5px solid rgb(200, 85, 85);
-    background-color: rgb(166, 47, 47);
-    
-  
-    @keyframes pulse {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
-      }
-  
-      70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
-      }
-  
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-      }
-    }
-  }
-
-  &.green-border {
-    display: flex;
-    flex-direction: column;
-    border: 5px solid rgb(57, 121, 63);
-    background-color: rgb(65, 140, 81);
-    }
-  .team-member-inputs {
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-
-    ::placeholder {
-      color: white;
-      opacity: 1;
-    }
-
-    .team-member {
-      color: white;
-      background-color: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.151);
-      text-align: center;
-      width: 100%;
-      height: 100%;
-      padding: 0;
-      box-sizing: border-box;
-
-      &:nth-child(1) {
-        margin-bottom: 2px;
-      }
-    }
-  }
-
-  &:hover {
-    background-color: rgb(75, 70, 90);
-    border-color: rgb(75, 70, 90);
-  }
-  
-}
-
 :host {
   display: flex;
   flex-basis: 12%;
   justify-content: center;
   align-items: center;
+
+  .team-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    text-align: center;
+    align-items: center;
+    background-color: $transparent-black;
+    border: 3px solid rgb(57, 121, 63);
+
+    &.red-border {
+      animation: pulse 2s infinite;
+      border: 3px solid rgb(200, 85, 85);
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgb(200, 85, 85);
+        }
+
+        70% {
+          box-shadow: 0 0 0 10px rgba(0, 0, 0, 0);
+        }
+
+        100% {
+          box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+        }
+      }
+    }
+
+    .country-flag {
+      width: 75%;
+      margin-bottom: 5px;
+    }
+
+    .team-member-inputs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+
+      ::placeholder {
+        color: white;
+        opacity: 1;
+      }
+
+      .team-member {
+        color: white;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.151);
+        text-align: center;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        box-sizing: border-box;
+
+        &:nth-child(1) {
+          margin-bottom: 2px;
+        }
+      }
+    }
+  }
 }
