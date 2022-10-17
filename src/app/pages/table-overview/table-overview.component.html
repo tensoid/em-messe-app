@@ -37,10 +37,9 @@
         <input
           type="number"
           min="0"
-          max="10"
-          oninput="validity.valid||(value='0');"
+          max="6"
           [(ngModel)]="match.goals[0]"
-          (ngModelChange)="dataChanged($event)"
+          (input)="dataChanged($event)"
         />
       </div>
 
@@ -68,10 +67,9 @@
         <input
           type="number"
           min="0"
-          max="10"
-          oninput="validity.valid||(value='0');"
+          max="6"
           [(ngModel)]="match.goals[1]"
-          (ngModelChange)="dataChanged($event)"
+          (input)="dataChanged($event)"
         />
       </div>
     </div>
@@ -107,10 +105,9 @@
         <input
           type="number"
           min="0"
-          max="10"
-          oninput="validity.valid||(value='0');"
+          max="6"
           [(ngModel)]="match.goals[match.round - 1][0]"
-          (ngModelChange)="dataChanged($event)"
+          (input)="dataChanged($event)"
         />
       </div>
 
@@ -138,10 +135,9 @@
         <input
           type="number"
           min="0"
-          max="10"
-          oninput="validity.valid||(value='0');"
+          max="6"
           [(ngModel)]="match.goals[match.round - 1][1]"
-          (ngModelChange)="dataChanged($event)"
+          (input)="dataChanged($event)"
         />
       </div>
     </div>
