@@ -1,83 +1,11 @@
-/* (A) FIXED WRAPPER */
-.hwrap {
-  overflow: hidden; /* HIDE SCROLL BAR */
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0.377);
-  font-size: 30px;
-  position: relative;
-  margin:auto;
-  padding-bottom: 0px; 
-  height: 6rem;
+@import 'variables.scss';
 
-   
-}
-//////////////////////////////////////////////
-/// Animation FadeIn
-/// 
-
-.fade-in{
-
-animation:fadeIn 5s infinite;
-
-}
-
-@keyframes fadeIn {
-  0%{opacity: 0;}
-  100%{opacity:1;}  
-}
-
-.blocker{
-width: 40px;
-height: 40px;
-position: relative;
-}
-///////////////////////////////////////////////
-/// Animation Move
-
-/* (B) MOVING TICKER WRAPPER
-.hmove {
-   display: flex;
-  }*/ 
-/* (C) ITEMS - INTO A LONG HORIZONTAL ROW 
-.hitem {
-  flex-shrink: 0;
+:host {
+  display: flex;
+  height: 8%;
   width: 100%;
-  box-sizing: border-box;
-  padding: 0px;
-  text-align: center;
-  white-space: nowrap;
-  color:aqua
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  background-color: $transparent-black;
 }
- */
-/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
-/* 4 ITEMS -400%, CHANGE THIS IF YOU ADD/REMOVE ITEMS 
-@keyframes ticker {
-  0% { transform: translate3d(100%, 0, 0); }
-  100% { transform: translate3d(-100%, 0, 0); }
-
-}
-.hmove {
-  animation: ticker linear 25s infinite;
-}
-*/
-.country-flag {
-  width: 45px;
-  margin-right: 5px;
-  margin-right: auto;
-}
-
-.image{
-  
-  padding-left: 40px;
-  padding-right:40px;
-  width: 45px;
-  height:25px;
-
-}
-
-
-
-
-
-
-

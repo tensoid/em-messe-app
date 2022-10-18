@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { GamedataService } from 'src/app/shared/services/gamedata.service';
 
 import { staggerFadeAnimation } from 'src/app/animations';
@@ -78,21 +78,23 @@ export class TableOverviewComponent {
       }
     }
 
-    //TODO: prevent even teams in group in group phase
+    //TODO: manual team point editing
 
     return true;
   }
+
+
 
   @HostListener('window:keyup', ['$event'])
   keyUpEvent(event: KeyboardEvent) {
 
     if(this.dataService.KOPhaseDone) return;
     if (!event.shiftKey) return;
-    if (!this.validateInputs()) return;
-
+    
     if (event.key == 'ArrowLeft') {
       this.dataService.returnToPreviousMatches();
     } else if (event.key == 'ArrowRight') {
+      if (!this.validateInputs()) return;
       this.dataService.startNextMatches();
     }
   }

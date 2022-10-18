@@ -1,13 +1,18 @@
 <h1>{{ this.dataService.tableOverviewTitle }}</h1>
 
 <div *ngIf="this.dataService.currentRound != -1" class="round">
-  Runde {{ this.dataService.currentRound }} von {{ this.dataService.groupPhaseDone ? 3 : 12}}
+  Runde {{ this.dataService.currentRound }} von
+  {{ this.dataService.groupPhaseDone ? 3 : 12 }}
 </div>
 <div *ngIf="!this.dataService.groupPhaseDone" class="next-games">
   <strong>Nächsten Partien:</strong>
   {{ this.dataService.nextMatchesAsFormattedString }}
 </div>
-<div class="tables-container" *ngIf="!this.dataService.groupPhaseDone" [@staggerFadeAnimation] = "this.dataService.currentRound">
+<div
+  class="tables-container"
+  *ngIf="!this.dataService.groupPhaseDone"
+  [@staggerFadeAnimation]="this.dataService.currentRound"
+>
   <div
     class="table"
     *ngFor="let match of this.dataService.activeGroupPhaseMatches; index as i"
@@ -60,7 +65,7 @@
             "
             class="member"
           >
-          {{ member ? member : "-" }}
+            {{ member ? member : "-" }}
           </div>
         </div>
 
@@ -75,7 +80,11 @@
     </div>
   </div>
 </div>
-<div class="tables-container" *ngIf="this.dataService.groupPhaseDone">
+<div
+  class="tables-container"
+  *ngIf="this.dataService.groupPhaseDone"
+  [@staggerFadeAnimation]="this.dataService.currentRound"
+>
   <div
     class="table"
     *ngFor="let match of this.dataService.activeKOMatches; index as i"
@@ -143,4 +152,3 @@
     </div>
   </div>
 </div>
-

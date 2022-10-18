@@ -1,27 +1,23 @@
-import { Component, OnInit, AfterContentChecked } from '@angular/core';
-import { AdvertisingdataService } from '../../services/advertisingdata.service';
-
+import { Component, OnInit } from '@angular/core';
+import { fadeAnimation } from 'src/app/animations';
+import { AdService } from '../../services/ad.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.scss']
+  styleUrls: ['./footer.component.scss'],
+  animations: [fadeAnimation],
 })
-
-
-
 export class FooterComponent implements OnInit {
+  constructor(private adService: AdService) {}
 
-  constructor(public advertisingdata: AdvertisingdataService) { }
+  ad: string;
 
- 
-  werbung : String;
   ngOnInit(): void {
-       
+    this.ad = this.adService.ad;
+
     setInterval(() => {
-      this.werbung = this.advertisingdata.werbung;
+      this.ad = this.adService.ad;
     }, 4000);
   }
-
-
 }
