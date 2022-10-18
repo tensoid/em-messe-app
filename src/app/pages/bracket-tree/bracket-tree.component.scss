@@ -20,7 +20,9 @@
   top: 35%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 400px;
+  width: 700px;
+  font-size: 90px;
+  color: #f3d646;
 }
 
 .tree-container {
@@ -235,13 +237,6 @@ $box-shadow2: ();
   -ms-transform: $settings;
 }
 
-body {
-  margin: 0;
-  padding: 0;
-  background: #000;
-  overflow: hidden;
-}
-
 .firework > .before,
 .firework > .after {
   position: absolute;
@@ -284,7 +279,7 @@ body {
   }
   20%,
   39.9% {
-    margin-top: 40%;
+    margin-top: 20%;
     margin-left: 30%;
   }
   40%,
@@ -294,7 +289,7 @@ body {
   }
   60%,
   79.9% {
-    margin-top: 30%;
+    margin-top: 25%;
     margin-left: 20%;
   }
   80%,

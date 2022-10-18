@@ -1,63 +1,61 @@
 @import "variables.scss";
 
 .bracket-wrapper {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 70%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 70%;
 }
 
-.bracket{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    border-radius: 4px;
-    background-color: $bracket-bg-color;
-    padding: 2px;
-    min-height: 42px;
-    justify-content: space-between;
-
-    /*
-    :first-child {
-        border-bottom: 1px solid black;
-    }
-    */
+.bracket {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: $bracket-bg-color;
+  padding: 3px 5px 3px 5px;
+  min-height: 42px;
+  justify-content: space-between;
+  border: 1px solid rgba(255, 255, 255, 0.164);
+  align-items: center;
 }
 
 .team {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 2px;
+  padding: 2px;
+
+  &.winner {
+    background-color: rgb(0, 160, 0);
+  }
+
+  .flag {
+    flex-basis: 15%;
+    height: 13px;
+    border: 1px solid white;
+    margin-right: 5px;
+  }
+
+  .goals-container {
     display: flex;
-    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
 
-    &.winner {
-        background-color: rgb(0, 160, 0);
+    .goals {
+      text-align: center;
+      min-width: 18px;
+
+      &:first-child {
+        border-right: 1px solid rgba(255, 255, 255, 0.199);
+      }
+
+      &:last-child {
+        border-left: 1px solid rgba(255, 255, 255, 0.199);
+      }
     }
-    
-    .flag {
-        flex-basis: 15%;
-        height: 13px;
-        border: 1px solid white;
-        margin-right: 5px;
-    }
-
-    //.name {}
-
-    .goals-container {
-
-        display: flex;
-        justify-content: flex-end;
-        width: 100%;
-
-        .goals {
-            background-color: $points-lightblue;
-            text-align: center;
-            min-width: 18px;
-        }
-        
-        .green {
-            //TODO: figure this out with product owners
-        }
-    }
+  }
 }

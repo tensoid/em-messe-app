@@ -13,7 +13,7 @@
       <td class="goal-ratio">
         {{ group.scores[i].goalRatio[0] }} : {{ group.scores[i].goalRatio[1] }}
       </td>
-      <td class="goal-difference">{{ group.scores[i].goalDifference }}</td>
+      <td class="goal-difference">{{ group.scores[i].goalDifference > 0 ? "+" + group.scores[i].goalDifference : group.scores[i].goalDifference }}</td>
       <td class="points">{{ group.scores[i].points }}</td>
     </div>
   </tr>
