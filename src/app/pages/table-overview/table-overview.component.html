@@ -7,7 +7,7 @@
   <strong>Nächsten Partien:</strong>
   {{ this.dataService.nextMatchesAsFormattedString }}
 </div>
-<div class="tables-container" *ngIf="!this.dataService.groupPhaseDone">
+<div class="tables-container" *ngIf="!this.dataService.groupPhaseDone" [@staggerFadeAnimation] = "this.dataService.currentRound">
   <div
     class="table"
     *ngFor="let match of this.dataService.activeGroupPhaseMatches; index as i"

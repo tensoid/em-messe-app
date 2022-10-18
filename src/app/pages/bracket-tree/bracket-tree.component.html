@@ -17,7 +17,7 @@
 <h1 *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-title">
   WELTMEISTER {{ this.dataService.KOPhaseWinner.toUpperCase() }}
 </h1>
-<div class="tree-container">
+<div class="tree-container" [@reverseStaggerFadeAnimation]>
   <div class="column">
     <div *ngIf="this.dataService.groupPhaseDone" class="brackets-container">
       <app-bracket

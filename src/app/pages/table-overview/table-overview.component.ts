@@ -1,13 +1,13 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { GamedataService } from 'src/app/shared/services/gamedata.service';
 
-//TODO: display country name??
-//TODO: auto 0 : 5 if team not set
+import { staggerFadeAnimation } from 'src/app/animations';
 
 @Component({
   selector: 'app-table-overview',
   templateUrl: './table-overview.component.html',
   styleUrls: ['./table-overview.component.scss'],
+  animations: [staggerFadeAnimation]
 })
 export class TableOverviewComponent {
   constructor(public dataService: GamedataService) {}
