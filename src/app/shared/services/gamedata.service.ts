@@ -429,6 +429,10 @@ export class GamedataService {
       return;
     }
 
+    if (environment.production) {
+      this.router.navigate(['/bracket-tree']);
+    }
+
     // All 3 match rounds for currently competing teams done
     // Set ongoing matches to done
     for (let match of activeMatches) {
@@ -445,10 +449,6 @@ export class GamedataService {
     // More teams left to compete in KO round so
     for (let match of upcomingMatchesInKORound) {
       match.state = MatchState.ONGOING;
-    }
-
-    if (environment.production) {
-      this.router.navigate(['/bracket-tree']);
     }
   }
 
