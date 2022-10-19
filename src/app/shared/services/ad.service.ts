@@ -5,8 +5,11 @@ import ads from './ads.json';
   providedIn: 'root'
 })
 export class AdService {
-  //TODO: not random but rather in order to avoid same ads repeating
+  private adIndex: number = 0;
+  
   get ad(): string {
-    return ads.funFacts[Math.floor(Math.random() * ads.funFacts.length)];
+    let ad = ads.funFacts[this.adIndex];
+    this.adIndex = this.adIndex == ads.funFacts.length - 1 ? 0 : this.adIndex + 1;
+    return ad;
   }
 }
