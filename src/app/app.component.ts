@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { fadeAnimation } from './animations'
+import { GamedataService } from './shared/services/gamedata.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,9 @@ import { fadeAnimation } from './animations'
   animations: [fadeAnimation]
 })
 export class AppComponent {
+
+  constructor(public dataService: GamedataService){}
+
   title = 'juniorenfirma-messe-app';
 }
 

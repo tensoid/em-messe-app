@@ -1,11 +1,14 @@
-<h1>K.O. Phase</h1>
-
+<h1 [ngClass]="{ blur: this.dataService.KOPhaseDone }">K.O. Phase</h1>
+<div class="transparent-bg"></div>
 <div *ngIf="this.dataService.KOPhaseDone" class="firework">
   <div class="before"></div>
   <div class="after"></div>
 </div>
-
-<div class="round-titles-container">
+!
+<div
+  [ngClass]="{ blur: this.dataService.KOPhaseDone }"
+  class="round-titles-container"
+>
   <div class="round-title">Achtelfinale</div>
   <div class="round-title">Viertelfinale</div>
   <div class="round-title">Halbfinale</div>
@@ -14,10 +17,19 @@
   <div class="round-title">Viertelfinale</div>
   <div class="round-title">Achtelfinale</div>
 </div>
-<h1 *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-title">
-  WELTMEISTER {{ this.dataService.KOPhaseWinner.toUpperCase() }}
-</h1>
-<div class="tree-container" [@bracketTreeStaggerFadeAnimation]>
+
+<div *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-container">
+  <h1 class="winner-title">Weltmeister</h1>
+  <h1 class="winner-name shine">
+    {{ this.dataService.KOPhaseWinner.toUpperCase() }}
+  </h1>
+</div>
+
+<div
+  [ngClass]="{ blur: this.dataService.KOPhaseDone }"
+  class="tree-container"
+  [@bracketTreeStaggerFadeAnimation]
+>
   <div class="column">
     <div *ngIf="this.dataService.groupPhaseDone" class="brackets-container">
       <app-bracket

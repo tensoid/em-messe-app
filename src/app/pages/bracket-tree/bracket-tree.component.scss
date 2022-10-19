@@ -1,147 +1,7 @@
 @import "variables.scss";
 
-.round-titles-container {
-  flex-basis: 20%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  position: relative;
-
-  .round-title {
-    flex-basis: calc(100% / 7);
-    text-align: center;
-  }
-
-  border-bottom: 1px solid rgba(255, 255, 255, 0.37);
-}
-
-.winner-title {
-  position: fixed;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 700px;
-  font-size: 90px;
-  color: #f3d646;
-}
-
-.tree-container {
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  width: 100%;
-
-  .column {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-
-    .brackets-container {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 100%;
-
-      :nth-child(odd)::after {
-        border-top: $bracket-connector-width solid $bracket-connector-color;
-        top: 50%;
-      }
-
-      :nth-child(even)::after {
-        border-bottom: $bracket-connector-width solid $bracket-connector-color;
-        bottom: 50%;
-      }
-    }
-
-    // First 3 columns
-    &:nth-child(-n + 3) {
-      app-bracket::before {
-        border-top: $bracket-connector-width solid $bracket-connector-color;
-        content: "";
-        position: absolute;
-        left: 0;
-        width: 10%;
-      }
-
-      app-bracket::after {
-        content: "";
-        position: absolute;
-        width: 10%;
-        height: 50%;
-        right: 0;
-        border-right: $bracket-connector-width $bracket-connector-color solid;
-      }
-    }
-
-    // Last 3 columns
-    &:nth-last-child(-n + 3) {
-      app-bracket::after {
-        content: "";
-        position: absolute;
-        width: 10%;
-        height: 50%;
-        left: 0;
-        border-left: $bracket-connector-width $bracket-connector-color solid;
-      }
-
-      app-bracket::before {
-        border-top: $bracket-connector-width solid $bracket-connector-color;
-        content: "";
-        position: absolute;
-        right: 0;
-        width: 10%;
-      }
-    }
-
-    // Middle column
-    &:nth-child(4) {
-      .brackets-container {
-        justify-content: center;
-      }
-
-      app-bracket {
-        flex-basis: 25%;
-        flex-grow: 0;
-        border: 1px solid yellow;
-        background-color: rgba(0, 0, 0, 0.288);
-      }
-    }
-
-    &:last-child {
-      app-bracket::before {
-        display: none;
-      }
-    }
-
-    &:first-child {
-      app-bracket::before {
-        display: none;
-      }
-    }
-
-    &:nth-child(3) {
-      app-bracket::after {
-        display: none;
-        border-right: none;
-      }
-    }
-
-    &:nth-child(5) {
-      app-bracket::after {
-        display: none;
-        border-left: none;
-      }
-    }
-  }
-}
-
-app-bracket {
-  flex-grow: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+.blur {
+  filter: blur(3px);
 }
 
 :host {
@@ -149,7 +9,175 @@ app-bracket {
   height: 100%;
   display: flex;
   flex-direction: column;
+
+  .transparent-bg {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    background: radial-gradient(rgba(124, 0, 37, 0.103), rgba(0, 0, 0, 0.644));
+  }
+  
+  
+  .round-titles-container {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+  
+    .round-title {
+      flex-basis: calc(100% / 7);
+      text-align: center;
+    }
+  
+    border-bottom: 1px solid rgba(255, 255, 255, 0.37);
+  }
+  
+  .winner-container {
+    z-index: 20;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: #f3d646;
+    
+    .winner-title {
+      font-size: 70px;
+      color: white;
+      margin: 0;
+    }
+    
+    .winner-name {
+      font-size: 140px;
+      margin: 0;
+    }
+  }
+  
+  
+  .tree-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+  
+    .column {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      width: 100%;
+  
+      .brackets-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+  
+        :nth-child(odd)::after {
+          border-top: $bracket-connector-width solid $bracket-connector-color;
+          top: 50%;
+        }
+  
+        :nth-child(even)::after {
+          border-bottom: $bracket-connector-width solid $bracket-connector-color;
+          bottom: 50%;
+        }
+      }
+  
+      // First 3 columns
+      &:nth-child(-n + 3) {
+        app-bracket::before {
+          border-top: $bracket-connector-width solid $bracket-connector-color;
+          content: "";
+          position: absolute;
+          left: 0;
+          width: 10%;
+        }
+  
+        app-bracket::after {
+          content: "";
+          position: absolute;
+          width: 10%;
+          height: 50%;
+          right: 0;
+          border-right: $bracket-connector-width $bracket-connector-color solid;
+        }
+      }
+  
+      // Last 3 columns
+      &:nth-last-child(-n + 3) {
+        app-bracket::after {
+          content: "";
+          position: absolute;
+          width: 10%;
+          height: 50%;
+          left: 0;
+          border-left: $bracket-connector-width $bracket-connector-color solid;
+        }
+  
+        app-bracket::before {
+          border-top: $bracket-connector-width solid $bracket-connector-color;
+          content: "";
+          position: absolute;
+          right: 0;
+          width: 10%;
+        }
+      }
+  
+      // Middle column
+      &:nth-child(4) {
+        .brackets-container {
+          justify-content: center;
+        }
+  
+        app-bracket {
+          flex-basis: 25%;
+          flex-grow: 0;
+          border: 1px solid yellow;
+          background-color: rgba(0, 0, 0, 0.288);
+        }
+      }
+  
+      &:last-child {
+        app-bracket::before {
+          display: none;
+        }
+      }
+  
+      &:first-child {
+        app-bracket::before {
+          display: none;
+        }
+      }
+  
+      &:nth-child(3) {
+        app-bracket::after {
+          display: none;
+          border-right: none;
+        }
+      }
+  
+      &:nth-child(5) {
+        app-bracket::after {
+          display: none;
+          border-left: none;
+        }
+      }
+    }
+  }
+  
+  app-bracket {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
 }
+
 
 /*
 Copyright (c) 2022 by Eddie Lin (https://codepen.io/yshlin/pen/WNMmQX)
@@ -239,6 +267,7 @@ $box-shadow2: ();
 
 .firework > .before,
 .firework > .after {
+  z-index: 20;
   position: absolute;
   width: 5px;
   height: 5px;
@@ -296,5 +325,24 @@ $box-shadow2: ();
   99.9% {
     margin-top: 30%;
     margin-left: 80%;
+  }
+}
+
+
+
+.shine {
+  background: linear-gradient(to right, #f3d646 0, rgb(255, 242, 126) 10%, #f3d646 20%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2s infinite linear;
+  animation-fill-mode: forwards;
+}
+    
+@keyframes shine {
+  0% {
+    background-position: 0;
+  }
+  100%{
+    background-position: 2000px;
   }
 }
