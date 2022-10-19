@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { fadeAnimation } from './animations'
 import { GamedataService } from './shared/services/gamedata.service';
 
@@ -12,6 +12,20 @@ export class AppComponent {
 
   constructor(public dataService: GamedataService){}
 
-  title = 'juniorenfirma-messe-app';
+  @HostListener('window:keyup', ['$event'])
+  onKeyUp(event: KeyboardEvent): void {
+    if(!event.shiftKey) return;
+    if(!event.ctrlKey) return;
+    if(!event.altKey) return;
+    if(event.code != "KeyR") return;
+
+    let answer: boolean = confirm("Wollen Sie wirklich alle daten löschen?");
+    if(!answer) return;
+
+    answer = confirm("Dies kann nicht rückgängig gemacht werden!");
+    if(!answer) return;
+
+    this.dataService.resetData();
+  }
 }
 

@@ -66,6 +66,21 @@ export class GamedataService {
   }
 
   /**
+   * Delets all gamedata and restarts the game.
+   */
+  resetData() {
+    localStorage.removeItem('groupPhaseMatches');
+    localStorage.removeItem('groups');
+    localStorage.removeItem('KOPhaseMatches');
+
+    this._groupPhaseMatches = presets.groupPhaseMatches as MatchDescription[];
+    this._groups = presets.groups as Group[];
+    this._KOPhaseMatches = presets.KOPhaseMatches as KOMatchDescription[][];
+
+    window.location.reload();
+  }
+
+  /**
    * Returns the item for the given key from the localStorage or undefined if it doesn't exist.
    * @param key Name of the key
    */

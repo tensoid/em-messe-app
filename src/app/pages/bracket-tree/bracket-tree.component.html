@@ -1,5 +1,5 @@
 <h1 [ngClass]="{ blur: this.dataService.KOPhaseDone }">K.O. Phase</h1>
-<div class="transparent-bg"></div>
+<div *ngIf="this.dataService.KOPhaseDone" class="transparent-bg"></div>
 <div *ngIf="this.dataService.KOPhaseDone" class="firework">
   <div class="before"></div>
   <div class="after"></div>
