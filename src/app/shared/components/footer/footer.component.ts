@@ -18,6 +18,6 @@ export class FooterComponent implements OnInit {
 
     setInterval(() => {
       this.ad = this.adService.ad;
-    }, 4000);
+    }, 25000);
   }
 }
