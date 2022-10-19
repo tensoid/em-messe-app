@@ -446,6 +446,10 @@ export class GamedataService {
     for (let match of upcomingMatchesInKORound) {
       match.state = MatchState.ONGOING;
     }
+
+    if (environment.production) {
+      this.router.navigate(['/bracket-tree']);
+    }
   }
 
   /**
@@ -515,10 +519,6 @@ export class GamedataService {
    * Advances to the next KO Round.
    */
   private startNextKOPhaseRound() {
-    if (environment.production) {
-      this.router.navigate(['/bracket-tree']);
-    }
-
     if (this.KOPhaseDone) return;
 
     let matchesInPreviousKORound =

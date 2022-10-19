@@ -61,7 +61,7 @@ export class TableOverviewComponent {
         input.value.length == 0 ||
         input.value.length > 1 ||
         parseInt(input.value) < 0 ||
-        parseInt(input.value) > 6
+        parseInt(input.value) > 6 
       ) {
         alert("Falsches Eingabeformat der Tore. Bitte überprüfen.");
         return false;
@@ -78,7 +78,13 @@ export class TableOverviewComponent {
       }
     }
 
-    //TODO: manual team point editing
+    // prevent more than 10 points per match
+    for(let i = 0; i < inputElements.length; i+=2) {
+      if(parseInt(inputElements[i].value) + parseInt(inputElements[i+1].value) > 10) {
+        alert("Punktestand über 10 darf nicht überschritten werden.");
+        return false;
+      }
+    }
 
     return true;
   }

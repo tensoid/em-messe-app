@@ -1,5 +1,14 @@
 @import "variables.scss";
 
+:host {
+    background-color: $transparent-black;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 21%;
+    margin-right: 20px;
+}
 
 .table-head {
     display: flex;
@@ -79,14 +88,4 @@ tr {
             flex-grow: 1;
         }
     }
-}
-
-:host {
-    background-color: $transparent-black;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-basis: 21%;
-    margin-right: 20px;
 }

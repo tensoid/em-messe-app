@@ -1,12 +1,12 @@
-<h1 [ngClass]="{ blur: this.dataService.KOPhaseDone }">K.O. Phase</h1>
-<div *ngIf="this.dataService.KOPhaseDone" class="transparent-bg"></div>
-<div *ngIf="this.dataService.KOPhaseDone" class="firework">
+<h1 [ngClass]="{ blur: this.dataService.KOPhaseDone && this.winnerOverlayActive }">K.O. Phase</h1>
+<div *ngIf="this.dataService.KOPhaseDone && this.winnerOverlayActive" class="transparent-bg"></div>
+<div *ngIf="this.dataService.KOPhaseDone && this.winnerOverlayActive" class="firework">
   <div class="before"></div>
   <div class="after"></div>
 </div>
-!
+
 <div
-  [ngClass]="{ blur: this.dataService.KOPhaseDone }"
+  [ngClass]="{ blur: this.dataService.KOPhaseDone && this.winnerOverlayActive }"
   class="round-titles-container"
 >
   <div class="round-title">Achtelfinale</div>
@@ -18,7 +18,7 @@
   <div class="round-title">Achtelfinale</div>
 </div>
 
-<div *ngIf="this.dataService.KOPhaseWinner != ''" class="winner-container">
+<div *ngIf="this.dataService.KOPhaseWinner != '' && this.winnerOverlayActive" class="winner-container">
   <h1 class="winner-title">Weltmeister</h1>
   <h1 class="winner-name shine">
     {{ this.dataService.KOPhaseWinner.toUpperCase() }}
@@ -26,7 +26,7 @@
 </div>
 
 <div
-  [ngClass]="{ blur: this.dataService.KOPhaseDone }"
+  [ngClass]="{ blur: this.dataService.KOPhaseDone && this.winnerOverlayActive }"
   class="tree-container"
   [@bracketTreeStaggerFadeAnimation]
 >

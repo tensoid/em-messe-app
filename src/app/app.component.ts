@@ -19,7 +19,7 @@ export class AppComponent {
     if(!event.altKey) return;
     if(event.code != "KeyR") return;
 
-    let answer: boolean = confirm("Wollen Sie wirklich alle daten löschen?");
+    let answer: boolean = confirm("Wollen Sie wirklich alle Daten löschen?");
     if(!answer) return;
 
     answer = confirm("Dies kann nicht rückgängig gemacht werden!");
