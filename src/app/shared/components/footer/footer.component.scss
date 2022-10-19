@@ -8,4 +8,6 @@
   justify-content: center;
   font-size: 25px;
   background-color: $transparent-black;
+  border-top: $transparent-border;
+  backdrop-filter: blur(4px);
 }
