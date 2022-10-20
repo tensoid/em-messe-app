@@ -1,9 +1,7 @@
 <h1 [ngClass]="{ blur: this.dataService.KOPhaseDone && this.winnerOverlayActive }">K.O. Phase</h1>
 <div *ngIf="this.dataService.KOPhaseDone && this.winnerOverlayActive" class="transparent-bg"></div>
-<div *ngIf="this.dataService.KOPhaseDone && this.winnerOverlayActive" class="firework">
-  <div class="before"></div>
-  <div class="after"></div>
-</div>
+
+<canvas [ngClass]="{ hidden: !this.dataService.KOPhaseDone || !this.winnerOverlayActive }" id="fireworks-cnv"></canvas>
 
 <div
   [ngClass]="{ blur: this.dataService.KOPhaseDone && this.winnerOverlayActive }"
