@@ -8,12 +8,26 @@
   <tr *ngFor="let team of group.teams; index as i">
     <td class="country-index">{{ i + 1 }}</td>
     <img class="country-flag" src="/assets/images/flags/{{ team.name }}.png" />
+    <button
+      (click)="this.dataService.addGoalsToTeam(team.name, -1)"
+      class="invis-button"
+    ></button>
     <td class="country-name">{{ team.name }}</td>
+    <button
+      (click)="this.dataService.addGoalsToTeam(team.name, 1)"
+      class="invis-button"
+    ></button>
     <div class="scores">
       <td class="goal-ratio">
         {{ group.scores[i].goalRatio[0] }} : {{ group.scores[i].goalRatio[1] }}
       </td>
-      <td class="goal-difference">{{ group.scores[i].goalDifference > 0 ? "+" + group.scores[i].goalDifference : group.scores[i].goalDifference }}</td>
+      <td class="goal-difference">
+        {{
+          group.scores[i].goalDifference > 0
+            ? "+" + group.scores[i].goalDifference
+            : group.scores[i].goalDifference
+        }}
+      </td>
       <td class="points">{{ group.scores[i].points }}</td>
     </div>
   </tr>

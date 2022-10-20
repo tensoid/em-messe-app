@@ -80,73 +80,73 @@
     {
       "name": "Gruppe A",
       "teams": [
-        { "name": "Ecuador", "members": ["", ""] },
-        { "name": "Niederlande", "members": ["", ""] },
-        { "name": "Katar", "members": ["", ""] },
-        { "name": "Senegal", "members": ["", ""] }
+        { "name": "Ecuador", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Niederlande", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Katar", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Senegal", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe B",
       "teams": [
-        { "name": "England", "members": ["", ""] },
-        { "name": "Iran", "members": ["", ""] },
-        { "name": "USA", "members": ["", ""] },
-        { "name": "Wales", "members": ["", ""] }
+        { "name": "England", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Iran", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "USA", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Wales", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe C",
       "teams": [
-        { "name": "Argentinien", "members": ["", ""] },
-        { "name": "Mexiko", "members": ["", ""] },
-        { "name": "Polen", "members": ["", ""] },
-        { "name": "Saudi-Arabien", "members": ["", ""] }
+        { "name": "Argentinien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Mexiko", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Polen", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Saudi-Arabien", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe D",
       "teams": [
-        { "name": "Australien", "members": ["", ""] },
-        { "name": "Dänemark", "members": ["", ""] },
-        { "name": "Frankreich", "members": ["", ""] },
-        { "name": "Tunesien", "members": ["", ""] }
+        { "name": "Australien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Dänemark", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Frankreich", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Tunesien", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe E",
       "teams": [
-        { "name": "Costa Rica", "members": ["", ""] },
-        { "name": "Deutschland", "members": ["", ""] },
-        { "name": "Japan", "members": ["", ""] },
-        { "name": "Spanien", "members": ["", ""] }
+        { "name": "Costa Rica", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Deutschland", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Japan", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Spanien", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe F",
       "teams": [
-        { "name": "Belgien", "members": ["", ""] },
-        { "name": "Kanada", "members": ["", ""] },
-        { "name": "Kroatien", "members": ["", ""] },
-        { "name": "Marokko", "members": ["", ""] }
+        { "name": "Belgien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Kanada", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Kroatien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Marokko", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe G",
       "teams": [
-        { "name": "Brasilien", "members": ["", ""] },
-        { "name": "Kamerun", "members": ["", ""] },
-        { "name": "Serbien", "members": ["", ""] },
-        { "name": "Schweiz", "members": ["", ""] }
+        { "name": "Brasilien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Kamerun", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Serbien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Schweiz", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe H",
       "teams": [
-        { "name": "Ghana", "members": ["", ""] },
-        { "name": "Portugal", "members": ["", ""] },
-        { "name": "Korea", "members": ["", ""] },
-        { "name": "Uruguay", "members": ["", ""] }
+        { "name": "Ghana", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Portugal", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Korea", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Uruguay", "members": ["", ""], "additionalGoals": 0 }
       ]
     }
   ]

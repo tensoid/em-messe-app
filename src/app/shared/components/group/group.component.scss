@@ -1,91 +1,107 @@
 @import "variables.scss";
 
 :host {
-    background-color: $transparent-black;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-basis: 21%;
-    margin-right: 20px;
+  background-color: $transparent-black;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-basis: 21%;
+  margin-right: 20px;
 }
 
 .table-head {
-    display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 
-    th {
-        font-size: 15px;
-    }
+  th {
+    font-size: 15px;
+  }
 
-    th.group-label {
-        font-size: 20px;
-        font-weight: bold;
-    }
+  th.group-label {
+    font-size: 20px;
+    font-weight: bold;
+  }
 
-    :nth-child(3) {
-        margin-right: 6px;
-    }
+  :nth-child(3) {
+    margin-right: 6px;
+  }
 
-    :nth-child(2) {
-        margin-right: 15px;
-    }
-    :nth-child(1) {
-        margin-right: auto;
-    }
+  :nth-child(2) {
+    margin-right: 15px;
+  }
+  :nth-child(1) {
+    margin-right: auto;
+  }
 }
 
 tr {
-    display: flex;
-    margin-bottom: 3px;
-    height: 25px;
-    width: 300px;
-    
-    
+  display: flex;
+  margin-bottom: 3px;
+  height: 25px;
+  width: 300px;
+
+  .country-index {
+    text-align: center;
+    flex-basis: 10%;
+    background-color: $points-darkblue;
+  }
+
+  &:nth-child(2),
+  &:nth-child(3) {
     .country-index {
-        text-align: center;
-        flex-basis: 10%;
-        background-color: $points-darkblue;
-    }
-
-    &:nth-child(2), &:nth-child(3) {
-        .country-index {
-            background-color: $points-lightblue;
-        }
-
-        .country-name {
-            color: rgb(193, 255, 193);
-        }
-    }
-
-    &:nth-last-child(-n+2) {
-        .country-name {
-            color: rgb(255, 193, 193);
-        }
-    }
-
-    .country-flag {
-        width: 45px;
-        margin-right: 5px;
-        margin-right: auto;
+      background-color: $points-lightblue;
     }
 
     .country-name {
-        background-color: $group-team-bg-color;
-        flex-grow: 1;
-        text-align: center;
+      color: rgb(193, 255, 193);
     }
+  }
 
-    .scores {
-
-        display: flex;
-        flex-basis: 35%;
-
-        td {
-            text-align: center;
-            background-color: $points-gray;
-            flex-grow: 1;
-        }
+  &:nth-last-child(-n + 2) {
+    .country-name {
+      color: rgb(255, 193, 193);
     }
+  }
+
+  .country-flag {
+    width: 45px;
+    margin-right: 5px;
+    margin-right: auto;
+  }
+
+  .country-name {
+    background-color: $group-team-bg-color;
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .scores {
+    display: flex;
+    flex-basis: 35%;
+
+    td {
+      text-align: center;
+      background-color: $points-gray;
+      flex-grow: 1;
+    }
+  }
+
+  .invis-button {
+    position: absolute;
+    height: 25px;
+    cursor: pointer;
+    background-color: transparent;
+    color: transparent;
+    border: none;
+  }
+
+  :nth-child(3).invis-button {
+    transform: translateX(77px);
+  }
+
+  :nth-child(5).invis-button {
+    transform: translateX(180px);
+  }
 }

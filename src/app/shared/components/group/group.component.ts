@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { GamedataService } from '../../services/gamedata.service';
 import { GroupWithScores } from '../../services/interfaces';
 
 @Component({
@@ -8,7 +9,7 @@ import { GroupWithScores } from '../../services/interfaces';
 })
 export class GroupComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dataService: GamedataService) { }
 
   @Input()
   group: GroupWithScores;

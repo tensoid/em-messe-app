@@ -142,6 +142,7 @@ export class GamedataService {
         );
 
         let score: Score = this.getScoreFromMatches(teamMatches, team.name);
+        score.goalRatio[0] += team.additionalGoals;
 
         scores.push(score);
       });
@@ -545,5 +546,25 @@ export class GamedataService {
       this._KOPhaseMatches[this.KOPhaseRoundIndex][i].state =
         MatchState.ONGOING;
     }
+  }
+
+  /**
+   * Last resort in case two teams are even at the end of the group phase.
+   * This can add or remove goals to a team to push them up or down on the leaderboard.
+   * It also repopulates the first KO Phase Round, therefore this only works right between the KO and Group phase.
+   * @param goals May be positive or negative.
+   */
+  addGoalsToTeam(teamName: string, goals: number) {
+    
+    if(!this.groupPhaseDone) return;
+    if(this.KOPhaseDone) return;
+    if(this.KOPhaseRoundIndex > 0) return;
+    if(this._KOPhaseMatches[0][0].round > 1) return;
+
+    let team = this.teams.find(team => team.name == teamName) as Team;
+    team.additionalGoals += goals;
+
+    this.startKOPhase();
+    this.saveData();
   }
 }

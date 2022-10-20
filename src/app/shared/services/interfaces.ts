@@ -1,6 +1,7 @@
 export interface Team {
   name: string;
   members: [string, string];
+  additionalGoals: number;
 }
 
 export interface Score {
