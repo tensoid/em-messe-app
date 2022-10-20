@@ -186,3 +186,21 @@ canvas{
 .hidden {
   display: none;
 }
+
+.shine {
+  background: linear-gradient(to right, #f3d646 0, rgb(255, 242, 126) 10%, #f3d646 20%);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 2s infinite linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 0vw;
+  }
+  100%{
+    background-position: 100vw;
+  }
+}
+
