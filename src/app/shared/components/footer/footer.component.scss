@@ -9,5 +9,24 @@
   font-size: 25px;
   background-color: $transparent-black;
   border-top: $transparent-border;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);  
+
+  background: linear-gradient(-45deg, #913e25, #6e193a, #851974, #7d921e);
+  background-size: 400% 400%;
+  animation: gradient 25s ease infinite;
+
+  
 }
+  
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+    }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
