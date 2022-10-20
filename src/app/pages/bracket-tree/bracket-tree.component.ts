@@ -18,8 +18,10 @@ export class BracketTreeComponent {
 
   @HostListener('window:keyup', ['$event'])
   keyUpEvent(event: KeyboardEvent): void {
-    if(event.key == "o") {
-      this.winnerOverlayActive = !this.winnerOverlayActive;
-    }
+
+    if(!event.shiftKey) return;
+    if(event.code != "KeyO") return;
+    
+    this.winnerOverlayActive = !this.winnerOverlayActive;
   }
 }

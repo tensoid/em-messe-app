@@ -26,7 +26,7 @@
           src="/assets/images/flags/{{ match.teamNames[0] }}.png"
         />
 
-        <div class="members-container">
+        <div *ngIf="!this.noNameMode" class="members-container">
           <div
             *ngFor="
               let member of this.dataService.getTeamMembersFromTeamName(
@@ -56,7 +56,7 @@
           src="/assets/images/flags/{{ match.teamNames[1] }}.png"
         />
 
-        <div class="members-container">
+        <div *ngIf="!this.noNameMode" class="members-container">
           <div
             *ngFor="
               let member of this.dataService.getTeamMembersFromTeamName(
@@ -98,7 +98,7 @@
           src="/assets/images/flags/{{ match.teamNames[0] }}.png"
         />
 
-        <div class="members-container">
+        <div *ngIf="!this.noNameMode" class="members-container">
           <div
             *ngFor="
               let member of this.dataService.getTeamMembersFromTeamName(
@@ -128,7 +128,7 @@
           src="/assets/images/flags/{{ match.teamNames[1] }}.png"
         />
 
-        <div class="members-container">
+        <div *ngIf="!this.noNameMode" class="members-container">
           <div
             *ngFor="
               let member of this.dataService.getTeamMembersFromTeamName(

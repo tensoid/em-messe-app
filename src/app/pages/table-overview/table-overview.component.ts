@@ -12,6 +12,8 @@ import { staggerFadeAnimation } from 'src/app/animations';
 export class TableOverviewComponent {
   constructor(public dataService: GamedataService) {}
 
+  public noNameMode: boolean = false;
+
   /**
    * Formats the input into something sensible and saves them to localStorage.
    * @param event Input Event
@@ -102,6 +104,8 @@ export class TableOverviewComponent {
     } else if (event.key == 'ArrowRight') {
       if (!this.validateInputs()) return;
       this.dataService.startNextMatches();
+    } else if(event.code == "KeyN") {
+      this.noNameMode = !this.noNameMode;
     }
   }
 }
