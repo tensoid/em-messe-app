@@ -12,9 +12,17 @@ export class AppComponent {
 
   constructor(public dataService: GamedataService){}
 
+  showAds: boolean = true;
+
   @HostListener('window:keyup', ['$event'])
   onKeyUp(event: KeyboardEvent): void {
     if(!event.shiftKey) return;
+
+    if(event.code == "KeyA") {
+      this.showAds = !this.showAds;
+      return;
+    }
+
     if(!event.ctrlKey) return;
     if(!event.altKey) return;
     if(event.code != "KeyR") return;
