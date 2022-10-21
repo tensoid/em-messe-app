@@ -1,13 +1,13 @@
 import { Component, HostListener } from '@angular/core';
 import { GamedataService } from 'src/app/shared/services/gamedata.service';
 
-import { staggerFadeAnimation } from 'src/app/animations';
+import { staggerFadeAnimationEnter } from 'src/app/animations';
 
 @Component({
   selector: 'app-table-overview',
   templateUrl: './table-overview.component.html',
   styleUrls: ['./table-overview.component.scss'],
-  animations: [staggerFadeAnimation]
+  animations: [staggerFadeAnimationEnter]
 })
 export class TableOverviewComponent {
   constructor(public dataService: GamedataService) {}

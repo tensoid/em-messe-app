@@ -1,12 +1,12 @@
 import { Component, HostListener } from '@angular/core';
-import { fadeAnimation } from './animations'
+import { fadeAnimationEnter } from './animations'
 import { GamedataService } from './shared/services/gamedata.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [fadeAnimation]
+  animations: [fadeAnimationEnter]
 })
 export class AppComponent {
 

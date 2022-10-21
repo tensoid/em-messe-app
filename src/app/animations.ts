@@ -10,6 +10,15 @@ import {
 
 export const fadeAnimation = trigger('fadeAnimation', [
   transition('* <=> *', [
+    style({
+      opacity: 0,
+    }),
+    animate('1s ease', style({ opacity: 1 })),
+  ]),
+]);
+
+export const fadeAnimationEnter = trigger('fadeAnimationEnter', [
+  transition('* <=> *', [
     query(
       ':enter',
       [
@@ -25,7 +34,7 @@ export const fadeAnimation = trigger('fadeAnimation', [
   ]),
 ]);
 
-export const staggerFadeAnimation = trigger('staggerFadeAnimation', [
+export const staggerFadeAnimationEnter = trigger('staggerFadeAnimationEnter', [
   transition('* => *', [
     query(
       ':enter',
@@ -38,8 +47,8 @@ export const staggerFadeAnimation = trigger('staggerFadeAnimation', [
   ]),
 ]);
 
-export const bracketTreeStaggerFadeAnimation = trigger(
-  'bracketTreeStaggerFadeAnimation',
+export const bracketTreeStaggerFadeAnimationEnter = trigger(
+  'bracketTreeStaggerFadeAnimationEnter',
   [
     transition('void => *', [
       group([

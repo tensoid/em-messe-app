@@ -1,13 +1,13 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { GamedataService } from 'src/app/shared/services/gamedata.service';
 
-import { bracketTreeStaggerFadeAnimation } from 'src/app/animations';
+import { bracketTreeStaggerFadeAnimationEnter } from 'src/app/animations';
 
 @Component({
   selector: 'app-bracket-tree',
   templateUrl: './bracket-tree.component.html',
   styleUrls: ['./bracket-tree.component.scss'],
-  animations: [bracketTreeStaggerFadeAnimation],
+  animations: [bracketTreeStaggerFadeAnimationEnter],
 })
 export class BracketTreeComponent implements OnInit {
   constructor(public dataService: GamedataService) {}
