@@ -1,0 +1,16 @@
+Navigation:
+  Shift + 1 : Gruppenübersicht
+  Shift + 2 : KO-Baum
+  Shift + 3 : Teamübersicht
+  Shift + 4 : Tischübersicht
+
+Überall:
+  Shift + A : Werbungsbanner togglen.
+  Shift + Strg + Alt + R : Spieldaten resetten.
+
+KO-Baum:
+  Shift + O : Sieger-Overlay togglen.
+
+Tisch-Übersicht:
+  Shift + N : Anzeige der Spieler der Teams togglen.
+  Shift + Pfeiltasten Links/Rechts : Vorherige / Nächste Runde beginnen.
