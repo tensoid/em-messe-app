@@ -34,6 +34,10 @@
       }
     }
 
+    &.yellow-border {
+      border: 3px solid rgb(200, 181, 85);
+    }
+
     .country-flag {
       width: 75%;
       margin-bottom: 5px;

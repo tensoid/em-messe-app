@@ -1,7 +1,7 @@
 <div
   class="team-container"
   [ngClass]="{
-    'red-border': !team.members[0] || !team.members[1]
+    'red-border': !team.members[0] && !team.members[1], 'yellow-border': (!team.members[0] && team.members[1]) || (team.members[0] && !team.members[1])
   }"
 >
   <div class="team-name">{{ team.name }}</div>
