@@ -52,27 +52,27 @@
 
   "KOPhaseMatches": [
     [
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 }
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 }
     ],
     [
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 }
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 }
     ],
     [
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 },
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 }
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 },
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 }
     ],
     [
-      { "teamNames": ["", ""], "goals": [[0, 0], [0, 0], [0, 0]], "state": 0, "round": 1 }
+      { "teamNames": ["", ""], "goals": [0, 0], "state": 0 }
     ]
   ],
 

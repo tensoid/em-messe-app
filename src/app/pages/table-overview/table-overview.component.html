@@ -4,18 +4,19 @@
   Runde {{ this.dataService.currentRound }} von
   {{ this.dataService.groupPhaseDone ? 3 : 12 }}
 </div>
+
 <div *ngIf="!this.dataService.groupPhaseDone" class="next-games">
   <strong>Nächste Partien:</strong>
   {{ this.dataService.nextMatchesAsFormattedString }}
 </div>
+
 <div
   class="tables-container"
-  *ngIf="!this.dataService.groupPhaseDone"
   [@staggerFadeAnimationEnter]="this.dataService.currentRound"
 >
   <div
     class="table"
-    *ngFor="let match of this.dataService.activeGroupPhaseMatches; index as i"
+    *ngFor="let match of this.dataService.activeMatches; index as i"
   >
     <div class="title">Tisch {{ i + 1 }}</div>
 
@@ -25,6 +26,7 @@
         <img
           class="flag"
           src="/assets/images/flags/{{ match.teamNames[0] }}.png"
+          alt=""
         />
 
         <div *ngIf="!this.noNameMode" class="members-container">
@@ -56,6 +58,7 @@
         <img
           class="flag"
           src="/assets/images/flags/{{ match.teamNames[1] }}.png"
+          alt=""
         />
 
         <div *ngIf="!this.noNameMode" class="members-container">
@@ -76,80 +79,6 @@
           min="0"
           max="6"
           [(ngModel)]="match.goals[1]"
-          (input)="inputChanged($event)"
-        />
-      </div>
-    </div>
-  </div>
-</div>
-<div
-  class="tables-container"
-  *ngIf="this.dataService.groupPhaseDone"
-  [@staggerFadeAnimationEnter]="this.dataService.currentRound"
->
-  <div
-    class="table"
-    *ngFor="let match of this.dataService.activeKOMatches; index as i"
-  >
-    <div class="title">Tisch {{ i + 1 }}</div>
-
-    <div class="teams-container">
-      <div class="team">
-        <div class="country-name">{{match.teamNames[0]}}</div>
-        <img
-          class="flag"
-          src="/assets/images/flags/{{ match.teamNames[0] }}.png"
-        />
-
-        <div *ngIf="!this.noNameMode" class="members-container">
-          <div
-            *ngFor="
-              let member of this.dataService.getTeamMembersFromTeamName(
-                match.teamNames[0]
-              )
-            "
-            class="member"
-          >
-            {{ member ? member : "-" }}
-          </div>
-        </div>
-
-        <input
-          type="number"
-          min="0"
-          max="6"
-          [(ngModel)]="match.goals[match.round - 1][0]"
-          (input)="inputChanged($event)"
-        />
-      </div>
-
-      <div class="versus">vs.</div>
-
-      <div class="team">
-        <div class="country-name">{{match.teamNames[1]}}</div>
-        <img
-          class="flag"
-          src="/assets/images/flags/{{ match.teamNames[1] }}.png"
-        />
-
-        <div *ngIf="!this.noNameMode" class="members-container">
-          <div
-            *ngFor="
-              let member of this.dataService.getTeamMembersFromTeamName(
-                match.teamNames[1]
-              )
-            "
-            class="member"
-          >
-            {{ member ? member : "-" }}
-          </div>
-        </div>
-
-        <input
-          type="number"
-          min="0"
-          max="6"
-          [(ngModel)]="match.goals[match.round - 1][1]"
           (input)="inputChanged($event)"
         />
       </div>

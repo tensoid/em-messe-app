@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { KOMatchDescription, MatchState } from '../../services/interfaces';
+import { MatchDescription, MatchState } from '../../services/interfaces';
 
 @Component({
   selector: 'app-bracket',
@@ -11,7 +11,7 @@ export class BracketComponent {
   constructor() { }
 
   @Input()
-  match: KOMatchDescription;
+  match: MatchDescription;
 
   /**
    * Returns the index of the winner in the bracket or -1 if its not yet decided.
@@ -20,8 +20,7 @@ export class BracketComponent {
 
     if(this.match.state != 2) return -1;
 
-    let winCountTeam1 = this.match.goals.reduce((winCount, goals) => winCount + (goals[0] > goals[1] ? 1 : 0), 0);
-
-    return winCountTeam1 > 1 ? 0 : 1;
+    if (this.match.goals[0] > this.match.goals[1]) return 0;
+    else return 1;
   }
 }

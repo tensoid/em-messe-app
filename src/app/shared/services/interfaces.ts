@@ -30,8 +30,3 @@ export interface MatchDescription {
   goals: [number, number];
   state: MatchState;
 }
-
-export interface KOMatchDescription extends Omit<MatchDescription, 'goals'> {
-  round: number;
-  goals: Array<[number, number]>;
-}
