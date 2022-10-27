@@ -80,10 +80,10 @@ export class TableOverviewComponent {
       }
     }
 
-    // prevent more than 10 points per match
+    // prevent more than 11 points per match
     for(let i = 0; i < inputElements.length; i+=2) {
-      if(parseInt(inputElements[i].value) + parseInt(inputElements[i+1].value) > 10) {
-        alert("Punktestand über 10 darf nicht überschritten werden.");
+      if(parseInt(inputElements[i].value) + parseInt(inputElements[i+1].value) > 11) {
+        alert("Punktestand über 11 darf nicht überschritten werden.");
         return false;
       }
     }
