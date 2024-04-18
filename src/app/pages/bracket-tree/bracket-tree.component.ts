@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { GamedataService } from 'src/app/shared/services/gamedata.service';
 
 import { bracketTreeStaggerFadeAnimationEnter } from 'src/app/animations';
@@ -9,7 +9,7 @@ import { bracketTreeStaggerFadeAnimationEnter } from 'src/app/animations';
   styleUrls: ['./bracket-tree.component.scss'],
   animations: [bracketTreeStaggerFadeAnimationEnter],
 })
-export class BracketTreeComponent implements OnInit {
+export class BracketTreeComponent implements OnInit, OnDestroy {
   constructor(public dataService: GamedataService) {}
 
   winnerOverlayActive: boolean = true;
@@ -30,6 +30,13 @@ export class BracketTreeComponent implements OnInit {
 
   ngOnInit(): void {
     this.fireworks = new Fireworks();
+    console.log("new");
+    
+  }
+
+  ngOnDestroy(): void {
+    console.log("stop");
+    this.fireworks.shouldStop = true;
   }
 }
 
@@ -43,6 +50,7 @@ class Fireworks {
   h: number;
   particles: Particle[] = [];
   probability: number = 0.04;
+  shouldStop: boolean = false;
 
   constructor() {
     this.canvas = document.getElementById('fireworks-cnv') as HTMLCanvasElement;
@@ -63,6 +71,8 @@ class Fireworks {
   }
 
   updateWorld() {
+    console.log("update");
+
     // produce faded copy of current canvas
     this.ctx2.globalAlpha = 0.8;
     this.ctx2.clearRect(0, 0, this.canvas2.width, this.canvas2.height);
@@ -78,7 +88,9 @@ class Fireworks {
     this.update();
     this.paint();
 
-    window.requestAnimationFrame(this.updateWorld.bind(this));
+    if(!this.shouldStop) {
+      window.requestAnimationFrame(this.updateWorld.bind(this));
+    }
   }
 
   update() {
