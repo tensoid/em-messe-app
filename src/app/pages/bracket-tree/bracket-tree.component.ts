@@ -30,12 +30,10 @@ export class BracketTreeComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.fireworks = new Fireworks();
-    console.log("new");
     
   }
 
   ngOnDestroy(): void {
-    console.log("stop");
     this.fireworks.shouldStop = true;
   }
 }
@@ -71,8 +69,6 @@ class Fireworks {
   }
 
   updateWorld() {
-    console.log("update");
-
     // produce faded copy of current canvas
     this.ctx2.globalAlpha = 0.8;
     this.ctx2.clearRect(0, 0, this.canvas2.width, this.canvas2.height);
