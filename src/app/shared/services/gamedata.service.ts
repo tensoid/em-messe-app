@@ -297,7 +297,7 @@ export class GamedataService {
       Math.floor(
         this._groupPhaseMatches.findIndex(
           (match) => match.state == MatchState.ONGOING
-        ) / 4
+        ) / 3
       ) + 1
     );
   }
@@ -326,11 +326,11 @@ export class GamedataService {
       (match) => match.state == MatchState.ONGOING
     );
 
-    if (firstActiveMatchIndex == this._groupPhaseMatches.length - 4) return [];
+    if (firstActiveMatchIndex == this._groupPhaseMatches.length - 3) return [];
 
     return this._groupPhaseMatches.slice(
-      firstActiveMatchIndex + 4,
-      firstActiveMatchIndex + 8
+      firstActiveMatchIndex + 3,
+      firstActiveMatchIndex + 6
     );
   }
 
@@ -448,7 +448,7 @@ export class GamedataService {
     // All matches done
     if (firstOngoingMatchIndex == -1) {
       for (
-        let i = this._groupPhaseMatches.length - 4;
+        let i = this._groupPhaseMatches.length - 3;
         i < this._groupPhaseMatches.length;
         i++
       ) {
@@ -464,9 +464,9 @@ export class GamedataService {
     }
 
     // Anything in between
-    for (let i = firstOngoingMatchIndex; i < firstOngoingMatchIndex + 4; i++) {
+    for (let i = firstOngoingMatchIndex; i < firstOngoingMatchIndex + 3; i++) {
       this._groupPhaseMatches[i].state = MatchState.UPCOMING;
-      this._groupPhaseMatches[i - 4].state = MatchState.ONGOING;
+      this._groupPhaseMatches[i - 3].state = MatchState.ONGOING;
     }
 
     this.saveData();
@@ -485,6 +485,8 @@ export class GamedataService {
     for (let i = 0; i < groupsWithScores.length; i += 2) {
       let winnersGroup1 = groupsWithScores[i].teams.slice(0, 2);
       let winnersGroup2 = groupsWithScores[i + 1].teams.slice(0, 2);
+
+      //TODO
 
       this.KOPhaseMatches[0][i].teamNames[0] = winnersGroup1[0].name;
       this.KOPhaseMatches[0][i].teamNames[1] = winnersGroup2[1].name;

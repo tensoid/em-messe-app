@@ -1,53 +1,41 @@
 {
   "groupPhaseMatches": [
-    { "teamNames": ["Katar", "Ecuador"], "goals": [0, 0], "state": 1 },
-    { "teamNames": ["England", "Iran"], "goals": [0, 0], "state": 1 },
-    { "teamNames": ["Senegal", "Niederlande"], "goals": [0, 0], "state": 1 },
-    { "teamNames": ["USA", "Wales"], "goals": [0, 0], "state": 1 },
-    { "teamNames": ["Argentinien", "Saudi-Arabien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Dänemark", "Tunesien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Mexiko", "Polen"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Frankreich", "Australien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Marokko", "Kroatien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Deutschland", "Japan"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Spanien", "Costa Rica"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Belgien", "Kanada"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Schweiz", "Kamerun"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Uruguay", "Korea"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Portugal", "Ghana"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Brasilien", "Serbien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Wales", "Iran"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Katar", "Senegal"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Niederlande", "Ecuador"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["USA", "England"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Tunesien", "Australien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Polen", "Saudi-Arabien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Frankreich", "Dänemark"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Argentinien", "Mexiko"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Japan", "Costa Rica"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Belgien", "Marokko"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Kroatien", "Kanada"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Spanien", "Deutschland"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Kamerun", "Serbien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Korea", "Ghana"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Brasilien", "Schweiz"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Portugal", "Uruguay"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Ecuador", "Senegal"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Niederlande", "Katar"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Iran", "USA"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Wales", "England"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Tunesien", "Frankreich"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Australien", "Dänemark"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Polen", "Argentinien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Saudi-Arabien", "Mexiko"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Kroatien", "Belgien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Kanada", "Marokko"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Japan", "Spanien"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Costa Rica", "Deutschland"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Korea", "Portugal"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Ghana", "Uruguay"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Serbien", "Schweiz"], "goals": [0, 0], "state": 0 },
-    { "teamNames": ["Kamerun", "Brasilien"], "goals": [0, 0], "state": 0 }
+    { "teamNames": ["Deutschland", "Schottland"], "goals": [0, 0], "state": 1 },
+    { "teamNames": ["Spanien", "Kroatien"], "goals": [0, 0], "state": 1 },
+    { "teamNames": ["Slowenien", "Dänemark"], "goals": [0, 0], "state": 1 },
+    { "teamNames": ["Ungarn", "Schweiz"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Italien", "Albanien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Serbien", "England"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Deutschland", "Ungarn"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Kroatien", "Albanien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Slowenien", "Serbien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Schottland", "Schweiz"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Spanien", "Italien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Dänemark", "England"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Schweiz", "Deutschland"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Albanien", "Spanien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["England", "Slowenien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Schottland", "Ungarn"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Kroatien", "Italien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Dänemark", "Serbien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Polen", "Niederlande"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Rumänien", "Ukraine"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Türkei", "Georgien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Österreich", "Frankreich"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Belgien", "Slowakei"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Portugal", "Tschechien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Polen", "Österreich"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Slowakei", "Ukraine"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Georgien", "Tschechien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Niederlande", "Frankreich"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Belgien", "Rumänien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Türkei", "Portugal"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Niederlande", "Österreich"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Slowakei", "Rumänien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Tschechien", "Türkei"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Frankreich", "Polen"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Ukraine", "Belgien"], "goals": [0, 0], "state": 0 },
+    { "teamNames": ["Georgien", "Portugal"], "goals": [0, 0], "state": 0 }
   ],
 
   "KOPhaseMatches": [
@@ -80,73 +68,55 @@
     {
       "name": "Gruppe A",
       "teams": [
-        { "name": "Ecuador", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Niederlande", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Katar", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Senegal", "members": ["", ""], "additionalGoals": 0 }
+        { "name": "Deutschland", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Ungarn", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Schottland", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Schweiz", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe B",
       "teams": [
-        { "name": "England", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Iran", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "USA", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Wales", "members": ["", ""], "additionalGoals": 0 }
+        { "name": "Spanien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Kroatien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Italien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Albanien", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe C",
       "teams": [
-        { "name": "Argentinien", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Mexiko", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Polen", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Saudi-Arabien", "members": ["", ""], "additionalGoals": 0 }
+        { "name": "Slowenien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Dänemark", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Serbien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "England", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe D",
       "teams": [
-        { "name": "Australien", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Dänemark", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Polen", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Niederlande", "members": ["", ""], "additionalGoals": 0 },
         { "name": "Frankreich", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Tunesien", "members": ["", ""], "additionalGoals": 0 }
+        { "name": "Österreich", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe E",
       "teams": [
-        { "name": "Costa Rica", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Deutschland", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Japan", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Spanien", "members": ["", ""], "additionalGoals": 0 }
+        { "name": "Rumänien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Ukraine", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Belgien", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Slowakei", "members": ["", ""], "additionalGoals": 0 }
       ]
     },
     {
       "name": "Gruppe F",
       "teams": [
-        { "name": "Belgien", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Kanada", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Kroatien", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Marokko", "members": ["", ""], "additionalGoals": 0 }
-      ]
-    },
-    {
-      "name": "Gruppe G",
-      "teams": [
-        { "name": "Brasilien", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Kamerun", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Serbien", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Schweiz", "members": ["", ""], "additionalGoals": 0 }
-      ]
-    },
-    {
-      "name": "Gruppe H",
-      "teams": [
-        { "name": "Ghana", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Türkei", "members": ["", ""], "additionalGoals": 0 },
+        { "name": "Georgien", "members": ["", ""], "additionalGoals": 0 },
         { "name": "Portugal", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Korea", "members": ["", ""], "additionalGoals": 0 },
-        { "name": "Uruguay", "members": ["", ""], "additionalGoals": 0 }
+        { "name": "Tschechien", "members": ["", ""], "additionalGoals": 0 }
       ]
     }
   ]
