@@ -21,29 +21,29 @@ export class TableOverviewComponent {
   inputChanged(event: Event) {
 
     // Format and correct input value if necessary
-    let element = event.target as HTMLInputElement;
-    let changed = false;
+    // let element = event.target as HTMLInputElement;
+    // let changed = false;
 
-    if (element.value.length > 1) {
-      element.value = element.value[element.value.length - 1];
-      changed = true;
-    }
-    if (element.value.length == 0) {
-      element.value = '0';
-      changed = true;
-    } else if (parseInt(element.value) < 0) {
-      element.value = '0';
-      changed = true;
-    } else if (parseInt(element.value) > 6) {
-      element.value = '6';
-      changed = true;
-    }
+    // if (element.value.length > 1) {
+    //   element.value = element.value[element.value.length - 1];
+    //   changed = true;
+    // }
+    // if (element.value.length == 0) {
+    //   element.value = '0';
+    //   changed = true;
+    // } else if (parseInt(element.value) < 0) {
+    //   element.value = '0';
+    //   changed = true;
+    // } else if (parseInt(element.value) > 6) {
+    //   element.value = '6';
+    //   changed = true;
+    // }
 
-    if (changed) {
-      // Needed to properly save the value
-      element.dispatchEvent(new Event('input'));
-      return;
-    }
+    // if (changed) {
+    //   // Needed to properly save the value
+    //   element.dispatchEvent(new Event('input'));
+    //   return;
+    // }
 
     this.dataService.saveData();
   }
