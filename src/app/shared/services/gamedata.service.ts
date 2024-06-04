@@ -9,6 +9,7 @@ import {
   MatchDescription,
   MatchState,
   Score,
+  TeamWithScore,
 } from './interfaces';
 
 import presets from './presets.json';
@@ -157,23 +158,25 @@ export class GamedataService {
     // the teams array and the scores array based on the scores.
     groupsWithScores.forEach((group) => {
       //combine
-      let combined = [];
-      for (let i = 0; i < group.teams.length; i++)
+      let combined: TeamWithScore[] = [];
+      for (let i = 0; i < group.teams.length; i++) {
         combined.push({ team: group.teams[i], score: group.scores[i] });
+      }
 
-      //sort by points then goal difference then goal Ratio + L + Fell Off
-      combined.sort((a, b) => {
-        if (a.score.points > b.score.points) return -1;
-        if (a.score.points < b.score.points) return 1;
+      // combined.sort((a, b) => {
+      //   if (a.score.points > b.score.points) return -1;
+      //   if (a.score.points < b.score.points) return 1;
 
-        if (a.score.goalDifference > b.score.goalDifference) return -1;
-        if (a.score.goalDifference < b.score.goalDifference) return 1;
+      //   if (a.score.goalDifference > b.score.goalDifference) return -1;
+      //   if (a.score.goalDifference < b.score.goalDifference) return 1;
 
-        if (a.score.goalRatio[0] > b.score.goalRatio[0]) return -1;
-        if (a.score.goalRatio[0] < b.score.goalRatio[0]) return 1;
+      //   if (a.score.goalRatio[0] > b.score.goalRatio[0]) return -1;
+      //   if (a.score.goalRatio[0] < b.score.goalRatio[0]) return 1;
 
-        return 0;
-      });
+      //   return 0;
+      // });
+
+      combined = this.sortTeamsByScore(combined);
 
       //separate again
       for (let j = 0; j < combined.length; j++) {
@@ -183,6 +186,26 @@ export class GamedataService {
     });
 
     return groupsWithScores;
+  }
+
+  //sort by points then goal difference then goal Ratio
+  sortTeamsByScore(unsortedTeams: TeamWithScore[]): TeamWithScore[] {
+    const teams = structuredClone(unsortedTeams);
+
+    teams.sort((a, b) => {
+      if (a.score.points > b.score.points) return -1;
+      if (a.score.points < b.score.points) return 1;
+
+      if (a.score.goalDifference > b.score.goalDifference) return -1;
+      if (a.score.goalDifference < b.score.goalDifference) return 1;
+
+      if (a.score.goalRatio[0] > b.score.goalRatio[0]) return -1;
+      if (a.score.goalRatio[0] < b.score.goalRatio[0]) return 1;
+
+      return 0;
+    });
+
+    return teams;
   }
 
   /**
@@ -265,12 +288,11 @@ export class GamedataService {
 
   get groupPhaseDone(): boolean {
     return (
-      this._groupPhaseMatches
-        .filter(
-          (match) =>
-            match.state == MatchState.ONGOING ||
-            match.state == MatchState.UPCOMING
-        ).length == 0
+      this._groupPhaseMatches.filter(
+        (match) =>
+          match.state == MatchState.ONGOING ||
+          match.state == MatchState.UPCOMING
+      ).length == 0
     );
   }
 
@@ -409,7 +431,7 @@ export class GamedataService {
 
     let upcomingMatchesInKORound = this._KOPhaseMatches[
       this.KOPhaseRoundIndex
-    ].filter((match) => match.state == MatchState.UPCOMING);
+    ].filter((match) => match.state == MatchState.UPCOMING).slice(0, 2);
     let activeMatches = this.activeMatches;
 
     if (environment.production) {
@@ -482,11 +504,10 @@ export class GamedataService {
 
     let groupsWithScores = this.groupsWithScores;
 
+    // 1. und 2. platzierte
     for (let i = 0; i < groupsWithScores.length; i += 2) {
       let winnersGroup1 = groupsWithScores[i].teams.slice(0, 2);
       let winnersGroup2 = groupsWithScores[i + 1].teams.slice(0, 2);
-
-      //TODO
 
       this.KOPhaseMatches[0][i].teamNames[0] = winnersGroup1[0].name;
       this.KOPhaseMatches[0][i].teamNames[1] = winnersGroup2[1].name;
@@ -494,8 +515,22 @@ export class GamedataService {
       this.KOPhaseMatches[0][i + 1].teamNames[1] = winnersGroup2[0].name;
     }
 
-    //set first 4 to ongoing
-    for (let i = 0; i < 4; i++) {
+    // vier besten 3. platzierten
+    const bestThirdPlaces = this.sortTeamsByScore(
+      groupsWithScores.map((g) => {
+        return { team: g.teams[2], score: g.scores[2] };
+      })
+    )
+      .slice(0, 4)
+      .map((t) => t.team.name);
+
+    this.KOPhaseMatches[0][6].teamNames[0] = bestThirdPlaces[0];
+    this.KOPhaseMatches[0][6].teamNames[1] = bestThirdPlaces[1];
+    this.KOPhaseMatches[0][7].teamNames[0] = bestThirdPlaces[2];
+    this.KOPhaseMatches[0][7].teamNames[1] = bestThirdPlaces[3];
+
+    // set first 2 to ongoing
+    for (let i = 0; i < 2; i++) {
       this._KOPhaseMatches[0][i].state = MatchState.ONGOING;
     }
   }
@@ -521,10 +556,10 @@ export class GamedataService {
       ] = winnerTeamName;
     });
 
-    //set first 4 to ongoing
+    //set first 2 to ongoing
     for (
       let i = 0;
-      i < Math.min(4, this._KOPhaseMatches[this.KOPhaseRoundIndex].length);
+      i < Math.min(2, this._KOPhaseMatches[this.KOPhaseRoundIndex].length);
       i++
     ) {
       this._KOPhaseMatches[this.KOPhaseRoundIndex][i].state =

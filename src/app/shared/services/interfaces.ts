@@ -30,3 +30,8 @@ export interface MatchDescription {
   goals: [number, number];
   state: MatchState;
 }
+
+export interface TeamWithScore {
+  team: Team,
+  score: Score
+}

@@ -57,18 +57,18 @@ export class TableOverviewComponent {
     let inputElements = document.querySelectorAll('input');
 
     // prevent wrong input formats
-    for(let i = 0; i < inputElements.length; i++) {
-      let input = inputElements[i];
-      if (
-        input.value.length == 0 ||
-        input.value.length > 1 ||
-        parseInt(input.value) < 0 ||
-        parseInt(input.value) > 6 
-      ) {
-        alert("Falsches Eingabeformat der Tore. Bitte überprüfen.");
-        return false;
-      }
-    }
+    // for(let i = 0; i < inputElements.length; i++) {
+    //   let input = inputElements[i];
+    //   if (
+    //     input.value.length == 0 ||
+    //     input.value.length > 1 ||
+    //     parseInt(input.value) < 0 ||
+    //     parseInt(input.value) > 6 
+    //   ) {
+    //     alert("Falsches Eingabeformat der Tore. Bitte überprüfen.");
+    //     return false;
+    //   }
+    // }
 
     // prevent even matches in ko phase
     if(this.dataService.groupPhaseDone) {
@@ -81,12 +81,12 @@ export class TableOverviewComponent {
     }
 
     // prevent more than 11 points per match
-    for(let i = 0; i < inputElements.length; i+=2) {
-      if(parseInt(inputElements[i].value) + parseInt(inputElements[i+1].value) > 11) {
-        alert("Punktestand über 11 darf nicht überschritten werden.");
-        return false;
-      }
-    }
+    // for(let i = 0; i < inputElements.length; i+=2) {
+    //   if(parseInt(inputElements[i].value) + parseInt(inputElements[i+1].value) > 11) {
+    //     alert("Punktestand über 11 darf nicht überschritten werden.");
+    //     return false;
+    //   }
+    // }
 
     return true;
   }
