@@ -246,7 +246,7 @@ export class GamedataService {
    */
   getTeamMembersFromTeamName(teamName: string): [string, string] {
     let team = this.teams.find((team) => team.name === teamName)?.members;
-    return team ? team : ['', ''];
+    return team || ['', ''];
   }
 
   get teams(): Team[] {
@@ -319,7 +319,7 @@ export class GamedataService {
       Math.floor(
         this._groupPhaseMatches.findIndex(
           (match) => match.state == MatchState.ONGOING
-        ) / 3
+        ) / 5
       ) + 1
     );
   }
@@ -339,7 +339,7 @@ export class GamedataService {
   }
 
   /**
-   * Returns next 4 or less upcoming group phase matches.
+   * Returns next 5 or less upcoming group phase matches.
    */
   private get nextGroupPhaseMatches(): MatchDescription[] {
     if (this.groupPhaseDone) return [];
@@ -348,11 +348,11 @@ export class GamedataService {
       (match) => match.state == MatchState.ONGOING
     );
 
-    if (firstActiveMatchIndex == this._groupPhaseMatches.length - 3) return [];
+    if (firstActiveMatchIndex == this._groupPhaseMatches.length - 5) return [];
 
     return this._groupPhaseMatches.slice(
-      firstActiveMatchIndex + 3,
-      firstActiveMatchIndex + 6
+      firstActiveMatchIndex + 5,
+      firstActiveMatchIndex + 10
     );
   }
 
@@ -470,7 +470,7 @@ export class GamedataService {
     // All matches done
     if (firstOngoingMatchIndex == -1) {
       for (
-        let i = this._groupPhaseMatches.length - 3;
+        let i = this._groupPhaseMatches.length - 5;
         i < this._groupPhaseMatches.length;
         i++
       ) {
@@ -486,9 +486,9 @@ export class GamedataService {
     }
 
     // Anything in between
-    for (let i = firstOngoingMatchIndex; i < firstOngoingMatchIndex + 3; i++) {
+    for (let i = firstOngoingMatchIndex; i < firstOngoingMatchIndex + 5; i++) {
       this._groupPhaseMatches[i].state = MatchState.UPCOMING;
-      this._groupPhaseMatches[i - 3].state = MatchState.ONGOING;
+      this._groupPhaseMatches[i - 5].state = MatchState.ONGOING;
     }
 
     this.saveData();
@@ -504,30 +504,40 @@ export class GamedataService {
 
     let groupsWithScores = this.groupsWithScores;
 
-    // 1. und 2. platzierte
-    for (let i = 0; i < groupsWithScores.length; i += 2) {
-      let winnersGroup1 = groupsWithScores[i].teams.slice(0, 2);
-      let winnersGroup2 = groupsWithScores[i + 1].teams.slice(0, 2);
+    let winners = [];
 
-      this.KOPhaseMatches[0][i].teamNames[0] = winnersGroup1[0].name;
-      this.KOPhaseMatches[0][i].teamNames[1] = winnersGroup2[1].name;
-      this.KOPhaseMatches[0][i + 1].teamNames[0] = winnersGroup1[1].name;
-      this.KOPhaseMatches[0][i + 1].teamNames[1] = winnersGroup2[0].name;
+    console.log(this.KOPhaseMatches);
+
+    // 1. bis 3. platzierte
+    for (const group of groupsWithScores) {
+      winners.push(group.teams[0]);
+      winners.push(group.teams[1]);
+      winners.push(group.teams[2]);
     }
 
-    // vier besten 3. platzierten
-    const bestThirdPlaces = this.sortTeamsByScore(
+    // bester 4. platzierter
+    const fourthPlaces = this.sortTeamsByScore(
       groupsWithScores.map((g) => {
-        return { team: g.teams[2], score: g.scores[2] };
+        return { team: g.teams[3], score: g.scores[3] };
       })
-    )
-      .slice(0, 4)
-      .map((t) => t.team.name);
+    );
 
-    this.KOPhaseMatches[0][6].teamNames[0] = bestThirdPlaces[0];
-    this.KOPhaseMatches[0][6].teamNames[1] = bestThirdPlaces[1];
-    this.KOPhaseMatches[0][7].teamNames[0] = bestThirdPlaces[2];
-    this.KOPhaseMatches[0][7].teamNames[1] = bestThirdPlaces[3];
+    //TODO: what if 4th places are even?
+    winners.push(fourthPlaces[0].team);
+
+    // shuffle winners
+    for (let i = winners.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [winners[i], winners[j]] = [winners[j], winners[i]];
+    }    
+
+    console.log(winners);
+
+    // fill matches
+    for (let i = 0; i < this._KOPhaseMatches[0].length; i++) {
+      this._KOPhaseMatches[0][i].teamNames[0] = winners[i * 2].name;
+      this._KOPhaseMatches[0][i].teamNames[1] = winners[i * 2 + 1].name;
+    }
 
     // set first 2 to ongoing
     for (let i = 0; i < 2; i++) {

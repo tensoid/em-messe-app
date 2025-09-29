@@ -49,12 +49,13 @@ class Fireworks {
   particles: Particle[] = [];
   probability: number = 0.04;
   shouldStop: boolean = false;
+  lastTime: number = performance.now();
 
   constructor() {
     this.canvas = document.getElementById('fireworks-cnv') as HTMLCanvasElement;
     this.ctx = this.canvas.getContext('2d') as CanvasRenderingContext2D;
 
-    this.canvas2 = document.createElement('canvas') as HTMLCanvasElement;
+    this.canvas2 = document.createElement('canvas');
     this.ctx2 = this.canvas2.getContext('2d') as CanvasRenderingContext2D;
     this.ctx2.globalAlpha = 0.8;
 
@@ -69,6 +70,10 @@ class Fireworks {
   }
 
   updateWorld() {
+    const now = performance.now();
+    const delta = (now - this.lastTime) / 16.67; // normalize to ~60 FPS
+    this.lastTime = now;
+
     // produce faded copy of current canvas
     this.ctx2.globalAlpha = 0.8;
     this.ctx2.clearRect(0, 0, this.canvas2.width, this.canvas2.height);
@@ -81,7 +86,7 @@ class Fireworks {
     //this.ctx.fillStyle = "#00000033";
     //this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-    this.update();
+    this.update(delta);
     this.paint();
 
     if(!this.shouldStop) {
@@ -89,13 +94,13 @@ class Fireworks {
     }
   }
 
-  update() {
+  update(delta: number) {
     if (this.particles.length < 500 && Math.random() < this.probability) {
       this.createFirework();
     }
     let alive = [];
     for (let particle of this.particles) {
-      if (particle.move()) {
+      if (particle.move(delta)) {
         alive.push(particle);
       }
     }
@@ -156,11 +161,11 @@ class Particle {
     this.color = color;
   }
 
-  move() {
-    this.x += this.vx;
-    this.vy += this.gravity;
-    this.y += this.vy;
-    this.alpha -= 0.01;
+  move(delta: number) {
+    this.x += this.vx * delta;
+    this.vy += this.gravity * delta;
+    this.y += this.vy * delta;
+    this.alpha -= 0.01 * delta;
     if (
       this.x <= -this.w ||
       this.x >= screen.width ||

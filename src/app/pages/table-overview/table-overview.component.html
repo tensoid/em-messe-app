@@ -2,7 +2,7 @@
 
 <div *ngIf="this.dataService.currentRound != -1" class="round">
   Runde {{ this.dataService.currentRound }} von
-  {{ this.dataService.groupPhaseDone ? 3 : 12 }}
+  {{ this.dataService.groupPhaseDone ? 3 : 6 }}
 </div>
 
 <div *ngIf="!this.dataService.groupPhaseDone" class="next-games">
