@@ -431,7 +431,7 @@ export class GamedataService {
 
     let upcomingMatchesInKORound = this._KOPhaseMatches[
       this.KOPhaseRoundIndex
-    ].filter((match) => match.state == MatchState.UPCOMING).slice(0, 2);
+    ].filter((match) => match.state == MatchState.UPCOMING).slice(0, 4);
     let activeMatches = this.activeMatches;
 
     if (environment.production) {
@@ -539,8 +539,8 @@ export class GamedataService {
       this._KOPhaseMatches[0][i].teamNames[1] = winners[i * 2 + 1].name;
     }
 
-    // set first 2 to ongoing
-    for (let i = 0; i < 2; i++) {
+    // set first 4 to ongoing
+    for (let i = 0; i < 4; i++) {
       this._KOPhaseMatches[0][i].state = MatchState.ONGOING;
     }
   }
@@ -566,10 +566,10 @@ export class GamedataService {
       ] = winnerTeamName;
     });
 
-    //set first 2 to ongoing
+    //set first 4 to ongoing
     for (
       let i = 0;
-      i < Math.min(2, this._KOPhaseMatches[this.KOPhaseRoundIndex].length);
+      i < Math.min(4, this._KOPhaseMatches[this.KOPhaseRoundIndex].length);
       i++
     ) {
       this._KOPhaseMatches[this.KOPhaseRoundIndex][i].state =
